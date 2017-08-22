@@ -23,8 +23,15 @@ public class UserResource {
 	@POST
 	@Path("/register")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create() {
-		return null;
+	public Response create(User user) {
+		User createdUser = userService.create(user);
+		if (createdUser == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		else {
+			return Response.status(Response.Status.CREATED).build();
+		}
+				
 	}
 	
 	@GET
