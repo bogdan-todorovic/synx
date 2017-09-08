@@ -25,7 +25,7 @@ public class User implements Serializable {
 	public User() {}
 	
 	public User(String username, String password, String firstname, String lastname, UserRole role, String phone,
-			String email, Date registrationDate) {
+			String email) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -34,7 +34,7 @@ public class User implements Serializable {
 		this.role = role;
 		this.phone = phone;
 		this.email = email;
-		this.registrationDate = registrationDate;
+		this.registrationDate = new Date();
 	}
 
 	public String getUsername() {

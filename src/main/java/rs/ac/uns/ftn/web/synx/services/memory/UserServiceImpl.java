@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
 		
 		users.put(entity.getUsername(), entity);
 		Serializer.save("users.ser", users);
-		Serializer.load("users.ser");
 		return entity;
 	}
 
@@ -46,5 +45,17 @@ public class UserServiceImpl implements UserService {
 			users.remove(id);
 		}
 	}
+	
+	@Override
+	public User authenticate(String username, String password) {
+		if (users.containsKey(username)) {
+			User u = users.get(username);
+			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+				return u;
+			}
+		}
+		return null;
+	}
+
 
 }
