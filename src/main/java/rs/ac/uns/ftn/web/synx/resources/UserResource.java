@@ -18,7 +18,6 @@ import rs.ac.uns.ftn.web.synx.services.memory.UserServiceImpl;
 import rs.ac.uns.ftn.web.synx.util.TokenGenerator;
 
 @Path("/users")
-
 public class UserResource {
 	
 	private UserService userService = new UserServiceImpl();

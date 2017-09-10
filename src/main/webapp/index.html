@@ -1,0 +1,37 @@
+<html ng-app="synxApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Forum</title>
+    <!-- CSS  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- ANGULAR SCRIPTS -->
+    <script src="https://code.angularjs.org/1.6.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js">
+    </script>
+    <!-- MY SCRIPTS-->
+    <script src="app.js"></script>
+    <script type="text/javascript" src="user/userConfig.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="home">Synx</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="register">Sign Up</a></li>
+                    <li><a ui-sref="login">Log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ui-view></div>
+</body>
+
+</html>
