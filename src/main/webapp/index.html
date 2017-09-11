@@ -28,14 +28,20 @@
             <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="home">Synx</a>
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a ui-sref="register">Sign Up</a></li>
-                    <li><a ui-sref="login">Log In</a></li>
-                </ul>
-            </div>
+            
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="">Forums</a></li>
+                <li><a ui-sref="">Topics</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="register">Sign Up</a></li>
+                <li><a ui-sref="login">Log In</a></li>
+            </ul>
+            
         </div>
     </nav>
+
     <div ui-view></div>
 </body>
 

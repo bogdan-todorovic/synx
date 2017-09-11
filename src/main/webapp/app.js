@@ -27,7 +27,7 @@
                         var stateService = $injector.get("$state");
                         localStorage.removeItem("token");
                         localStorage.removeItem("currentUser");
-                        console.log(stateService);
+                        //console.log(stateService);
                         stateService.go("login");
                     }
                     return $q.reject(error);
