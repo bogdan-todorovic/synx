@@ -12,6 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import rs.ac.uns.ftn.web.synx.model.User;
 import rs.ac.uns.ftn.web.synx.services.UserService;
 import rs.ac.uns.ftn.web.synx.services.memory.UserServiceImpl;
@@ -51,7 +53,7 @@ public class UserResource {
 		
 		User authenticatedUser = userService.authenticate(user.getUsername(), user.getPassword());
 		if(authenticatedUser == null) {
-			return Response.status(Response.Status.FORBIDDEN).entity("Incorrect username or password").build();
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		
 		TokenGenerator tokenGen = new TokenGenerator();

@@ -6,10 +6,7 @@
             self.urlBase = "rest/users";
 
             self.authenticateUser = function(data) {
-                return $http.post(self.urlBase + "/login", data)
-                    .then(function(response) {
-                        return response.data;
-                    });
+                return $http.post(self.urlBase + "/login", data);
             };
         }]);
 })();
