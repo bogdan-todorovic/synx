@@ -1,7 +1,16 @@
 (function() {
     
     angular.module("synxApp")
-        .controller(["$scope", function($scope) {
+        .controller("loginController", ["$scope", "userSvc", function($scope, userSvc) {
+
+
+            $scope.login = function() {
+                userSvc.authenticateUser($scope.user)
+                .then(function(response) {
+                    console.log(response);
+                });
+            };
+
 
         }]);
 

@@ -1,12 +1,12 @@
 <div class="container-fluid col-md-4 col-md-offset-4" style="background-color:#f1f1f1">
     
-    <form name="loginForm" ng-submit="login()" class="form-signin">
+    <form name="loginForm" ng-submit="login()" class="form-signin" role="form">
         <h2 class="form-signin-heading">Log in</h2>
 
-        <input type="text" id="uname" ng-model="" class="form-control" placeholder="Username" 
+        <input type="text" id="uname" ng-model="user.username" class="form-control" placeholder="Username" 
             style="margin-bottom: 10px" required autofocus>
 
-        <input type="password" id="pw" ng-model="" class="form-control" placeholder="Password" 
+        <input type="password" id="pw" ng-model="user.password" class="form-control" placeholder="Password" 
         style="margin-bottom: 10px" required>
 
         <button type="submit" class="btn btn-md btn-primary btn-block" style="margin-bottom: 15px">

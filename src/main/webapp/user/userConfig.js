@@ -6,7 +6,7 @@
                 .state("login", {
                     url: "/login",
                     templateUrl: "user/login.html",
-                    controller: "loginController.js"
+                    controller: "loginController"
                 });
         }
         ]);
