@@ -8,5 +8,10 @@
             self.authenticateUser = function(data) {
                 return $http.post(self.urlBase + "/login", data);
             };
+
+            self.register = function(data) {
+                return $http.post(self.urlBase + "/register", data);
+            };
+            
         }]);
 })();

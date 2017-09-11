@@ -23,12 +23,13 @@
                     return config;
                 },
                 responseError: function(error) {
-                    var stateService = $injector.get("$state");
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("currentUser");
-                    console.log($rootScope.user);
-                    
-                    stateService.go("login");
+                    if (error.status === 401 || error.status === 403) {
+                        var stateService = $injector.get("$state");
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("currentUser");
+                        console.log(stateService);
+                        stateService.go("login");
+                    }
                     return $q.reject(error);
                 }
             };
