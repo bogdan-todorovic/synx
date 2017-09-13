@@ -12,7 +12,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import rs.ac.uns.ftn.web.synx.model.User;
 import rs.ac.uns.ftn.web.synx.services.UserService;
@@ -62,8 +61,7 @@ public class UserResource {
 		
 	}
 	
-	//@RolesAllowed("USER")
-	@PermitAll
+	@RolesAllowed("USER")
 	@GET
 	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)

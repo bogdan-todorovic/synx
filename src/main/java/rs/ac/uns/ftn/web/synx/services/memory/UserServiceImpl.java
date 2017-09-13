@@ -17,7 +17,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findOne(String id) {
-		return users.get(id);
+		if (users.containsKey(id)) {
+			return users.get(id);
+		}
+		return null;
 	}
 
 	@Override
