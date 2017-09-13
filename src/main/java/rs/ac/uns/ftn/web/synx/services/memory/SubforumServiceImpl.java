@@ -30,7 +30,6 @@ public class SubforumServiceImpl implements SubforumService {
 	public Subforum create(Subforum entity) {
 		if (subforums.containsKey(entity.getTitle())) {
 			return null;
-			
 		}
 		
 		subforums.put(entity.getTitle(), entity);
