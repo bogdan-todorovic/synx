@@ -40,11 +40,18 @@ public class SubforumServiceImpl implements SubforumService {
 
 	@Override
 	public void remove(String id) {
-		Subforum sf = subforums.get(id);
-		
-		if (sf != null) {
+		if (subforums.containsKey(id)) {
 			subforums.remove(id);
+			Serializer.save("subforums.ser", subforums);
 		}
+	}
+
+	@Override
+	public Subforum update(String id, Subforum newSubforum) {
+		remove(id);
+		Subforum updatedSubforum = create(newSubforum);
+		Serializer.save("subforums.ser", subforums);
+		return updatedSubforum;
 	}
 
 }

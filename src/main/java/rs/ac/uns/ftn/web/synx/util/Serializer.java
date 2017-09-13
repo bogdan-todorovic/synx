@@ -18,7 +18,7 @@ public class Serializer {
 
 	
 	public synchronized static <T, U> void save(String path, Map<T, U> data) {
-
+		
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
