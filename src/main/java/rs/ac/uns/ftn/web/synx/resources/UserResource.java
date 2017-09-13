@@ -61,7 +61,8 @@ public class UserResource {
 		
 	}
 	
-	@RolesAllowed("USER")
+	//@RolesAllowed("USER")
+	@PermitAll
 	@GET
 	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)
