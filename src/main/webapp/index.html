@@ -20,6 +20,13 @@
     <script type="text/javascript" src="user/loginController.js"></script>
     <script type="text/javascript" src="user/userService.js"></script>
     <script type="text/javascript" src="user/registerController.js"></script>
+    <script type="text/javascript" src="user/logoutController.js"></script>
+
+    <!-- SUBFORUM -->
+    <script type="text/javascript" src="subforum/subforumConfig.js"></script>
+    <script type="text/javascript" src="subforum/subforumService.js"></script>
+    <script type="text/javascript" src="subforum/subforumsController.js"></script>
+
 </head>
 
 <body>
@@ -30,13 +37,16 @@
             </div>
             
             <ul class="nav navbar-nav">
-                <li><a ui-sref="">Forums</a></li>
-                <li><a ui-sref="">Topics</a></li>
+                <li><a ui-sref="subforums">Subforums</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-if="$root.user == null">
                 <li><a ui-sref="register">Sign Up</a></li>
                 <li><a ui-sref="login">Log In</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" ng-controller="logoutController" ng-if="$root.user != null">
+                <button class="btn btn-default" ng-click="logout()">Log out</button>
             </ul>
             
         </div>

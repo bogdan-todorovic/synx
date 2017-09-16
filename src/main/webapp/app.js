@@ -19,6 +19,7 @@
                     var token = localStorage.getItem("token");
                     if (token) {
                         config.headers["x-auth-token"] = token;
+                        $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
                     }
                     return config;
                 },

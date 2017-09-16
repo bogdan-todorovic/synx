@@ -11,7 +11,7 @@ public class Subforum implements Serializable {
 	private String title;
 	private String description;
 	private String icon;
-	
+	private List<String> rules;
 	private String leadModerator;
 	private List<String> moderators = new ArrayList<>();
 	
@@ -19,10 +19,11 @@ public class Subforum implements Serializable {
 	
 	public Subforum() {	}
 	
-	public Subforum(String title, String description, String icon, String lead, List<String> moderators) {
+	public Subforum(String title, String description, String icon, List<String> rules, String lead, List<String> moderators) {
 		this.title = title;
 		this.description = description;
 		this.icon = icon;
+		this.rules = rules;
 		this.leadModerator = lead;
 		this.moderators = moderators;
 	}
@@ -49,6 +50,14 @@ public class Subforum implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public List<String> getRules() {
+		return rules;
+	}
+
+	public void setRules(List<String> rules) {
+		this.rules = rules;
 	}
 
 	public String getLeadModerator() {
