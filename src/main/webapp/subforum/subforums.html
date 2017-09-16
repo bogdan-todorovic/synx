@@ -15,7 +15,7 @@
                     <form name="myForm" class="form-group col-md-12">
                         <label class="col-md-2 control-label" for="title">Title</label>
                         <div class="col-md-7">
-                            <input type="text" id="title" name="title" class="form-control input-sm" placeholder="Title" required/>
+                            <input type="text" id="title" name="title" ng-model="subforum.title" class="form-control input-sm" placeholder="Title" required/>
                         </div>
                     </form>
                 </div>
@@ -23,7 +23,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label" for="descripiton">Description</label>
                         <div class="col-md-7">
-                            <input type="text" id="descripiton" class="form-control input-sm" placeholder="Description" required/>
+                            <input type="text" id="descripiton" ng-model="subforum.description" class="form-control input-sm" placeholder="Description" required/>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label" for="icon">Icon</label>
                         <div class="col-md-7">
-                            <input type="text" id="icon" class="form-control input-sm" placeholder="Icon" required/>
+                            <input type="text" id="icon" ng-model="subforum.icon" class="form-control input-sm" placeholder="Icon" required/>
                         </div>
                     </div>
                 </div>
@@ -39,13 +39,13 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label" for="rules">Rules</label>
                         <div class="col-md-7">
-                            <input type="text" id="rules" class="form-control input-sm" placeholder="Rules" required/>
+                            <input type="text" id="rules" ng-model="subforum.rules" class="form-control input-sm" placeholder="Rules" required/>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-actions" align="center">
-                        <button type="button" class="btn btn-primary btn-md">
+                        <button type="button" ng-click="create()" class="btn btn-primary btn-md">
                             Create
                         </button>
                     </div>
@@ -65,13 +65,19 @@
                             <td class="col-md-2" style="border: none;">{{sf.icon}}</td>
                             <th class="col-md-2" style="border: none;">{{sf.title}}</th>
                             <td class="col-md-2" style="border: none;">{{sf.description}}</td>
-                            <td class="col-md-2" style="border: none;">{{sf.rules}}</td>
+                            <td class="col-md-2" style="border: none;">
+                                <ul ng-repeat="rule in sf.rules">
+                                    <li>{{rule}}</li>
+                                </ul>
+                            </td>
                             <td class="col-md-2" style="border: none;">{{sf.leadModerator}}</td>
                             <td style="border: none;">
                                 <button type="button" class="btn btn-success">Edit</button>
                             </td>
                             <td style="border: none;">
-                                <button type="button" class="btn btn-danger" >Delete</button>
+                                <button type="button" class="btn btn-danger" ng-click="delete(sf)">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     </tbody>

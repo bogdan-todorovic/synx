@@ -9,5 +9,13 @@
                 return $http.get(self.baseUrl);
             };
 
+            self.createSubforum = function(data) {
+                return $http.post(self.baseUrl, data);
+            };
+
+            self.removeSubforum = function(id) {
+                return $http.delete(self.baseUrl + "/" + id);
+            };
+
         }]); 
 })();
