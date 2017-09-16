@@ -45,9 +45,10 @@
                 </div>
                 <div class="row">
                     <div class="form-actions" align="center">
-                        <button type="button" ng-click="create()" class="btn btn-primary btn-md">
-                            Create
+                        <button type="button" ng-click="submit()" class="btn btn-primary btn-md">
+                            {{createOrEdit ? "Create" : "Update"}}
                         </button>
+                        <button type="button" ng-click="resetForm()" class="btn btn-danger btn-md">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,7 @@
                             </td>
                             <td class="col-md-2" style="border: none;">{{sf.leadModerator}}</td>
                             <td style="border: none;">
-                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-success" ng-click="edit(sf)">Edit</button>
                             </td>
                             <td style="border: none;">
                                 <button type="button" class="btn btn-danger" ng-click="delete(sf)">

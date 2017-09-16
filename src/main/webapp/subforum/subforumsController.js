@@ -4,6 +4,7 @@
 
             $scope.subforums = {};
             $scope.subforum = {};
+            $scope.createOrEdit = true;
 
             (function() {
                 subforumSvc.getAllSubforums()
@@ -16,7 +17,18 @@
                     );
             })();
 
-            $scope.create = function() {
+            $scope.submit = function() {
+                if ($scope.createOrEdit) {
+                    create();
+                } 
+                else {
+                    console.log("APDEJTUJ POSTOJECI");
+                    update();
+                } 
+
+            };
+
+            var create = function() {
                 subforumSvc.createSubforum($scope.subforum)
                     .then(function(response) {
                         $scope.subforums.push(response.data);
@@ -25,6 +37,10 @@
                     function(error) {
                         $scope.errorMessage = "Subforum with that title already exists";
                     });
+            };
+
+            var update = function() {
+                console.log($scope.subforum);
             };
 
             $scope.delete = function(sf) {
@@ -43,5 +59,15 @@
                     );
             };
 
+            $scope.edit = function(sf) {
+                //cloninig object
+                $scope.subforum = JSON.parse(JSON.stringify(sf));
+                $scope.createOrEdit = false;
+            };
+
+            $scope.resetForm = function() {
+                $scope.subforum = {};
+                $scope.createOrEdit = true;
+            };
         }]);
 })();
