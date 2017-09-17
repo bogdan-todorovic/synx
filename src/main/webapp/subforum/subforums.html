@@ -15,7 +15,8 @@
                     <form name="myForm" class="form-group col-md-12">
                         <label class="col-md-2 control-label" for="title">Title</label>
                         <div class="col-md-7">
-                            <input type="text" id="title" name="title" ng-model="subforum.title" class="form-control input-sm" placeholder="Title" required/>
+                            <input type="text" id="title" name="title" ng-model="subforum.title" 
+                            ng-disabled="!createOrEdit" class="form-control input-sm" placeholder="Title" required/>
                         </div>
                     </form>
                 </div>

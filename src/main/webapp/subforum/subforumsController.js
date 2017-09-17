@@ -6,7 +6,7 @@
             $scope.subforum = {};
             $scope.createOrEdit = true;
 
-            (function() {
+            function getAll() {
                 subforumSvc.getAllSubforums()
                     .then(function(response) {
                             $scope.subforums = response.data;
@@ -15,7 +15,8 @@
                             $scope.alertMessage = "Unable to load subforums";
                         }
                     );
-            })();
+            }
+            getAll();
 
             $scope.submit = function() {
                 if ($scope.createOrEdit) {
@@ -40,14 +41,21 @@
             };
 
             var update = function() {
-                console.log($scope.subforum);
+                subforumSvc.updateSubforum($scope.subforum)
+                    .then(function(response) {
+                        getAll();
+                        $scope.successMessage = "Subforum successfully updated";
+                    },
+                    function(error) {
+                        $scope.errorMessage = "Subforum with that title already exists";
+                    }
+                    );
             };
 
             $scope.delete = function(sf) {
                 console.log(sf);
                 subforumSvc.removeSubforum(sf.title)
                     .then(function(response) {
-                        console.log("deleted");
                         var index = $scope.subforums.indexOf(sf);
                         if (index !== -1) {
                             $scope.subforums.splice(index, 1); 

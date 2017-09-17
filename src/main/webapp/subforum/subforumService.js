@@ -17,5 +17,9 @@
                 return $http.delete(self.baseUrl + "/" + id);
             };
 
+            self.updateSubforum = function(data) {
+                return $http.put(self.baseUrl + "/" + data.title, data);
+            };
+
         }]); 
 })();
