@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Logo */
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand > img {
+    padding: 1px;
+    height: 48px;
+    width: auto;
+}
+
+.homey {
+    background: black;
+}
