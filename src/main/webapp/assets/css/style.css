@@ -15,6 +15,15 @@
     width: auto;
 }
 
-.homey {
-    background: black;
+/* Login form */
+.loginContainer > div > div {
+    background: #f1f1f1;
+}
+
+.loginContainer .member {
+    font-weight: normal;
+}
+
+.loginContainer a {
+    text-decoration: underline;
 }
