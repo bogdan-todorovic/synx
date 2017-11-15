@@ -60,7 +60,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 			TokenGenerator tokenGenerator = new TokenGenerator();
 			User user = tokenGenerator.parseUserFromToken(token);
 			
-			
 			if (user != null) {
 				// Check if user role is allowed to access
 				boolean isAllowed = Arrays.asList(roles).contains(user.getRole().toString());
@@ -68,9 +67,12 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 					requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
 							.entity("You cannot access this resource with that role").build());
 				}
-
+			} 
+			else {
+				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
+						.entity("User does not exist").build());
 			}
-
+			
 		}
 	}
 
