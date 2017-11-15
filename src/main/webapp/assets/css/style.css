@@ -15,15 +15,25 @@
     width: auto;
 }
 
+/* Login, Registration */
+.member {
+    font-weight: normal;
+}
+
 /* Login form */
 .loginContainer > div > div {
     background: #f1f1f1;
 }
 
-.loginContainer .member {
-    font-weight: normal;
+.loginContainer a {
+    text-decoration: underline;
 }
 
-.loginContainer a {
+/* Registration form */
+.registerContainer > div > div {
+    background: #f1f1f1;
+}
+
+.registerContainer a {
     text-decoration: underline;
 }
