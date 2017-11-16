@@ -23,12 +23,10 @@ public class TokenGenerator {
 	private static final String SEPARATOR_SPLITTER = "\\.";
 
 	private final Mac hmac;
-
+	private final byte[] secretKey = DatatypeConverter.parseBase64Binary(
+			"9SyECk96oDsTmXfogIieDI0cD/8FpnojlYSUJT5U9I/FGVmBz5oskmjOR8cbXTvoPjX+Pq/T/b1PqpHX0lYm0oCBjXWICA==");
+	
 	public TokenGenerator() {
-		
-		byte[] secretKey = DatatypeConverter.parseBase64Binary(
-				"9SyECk96oDsTmXfogIieDI0cD/8FpnojlYSUJT5U9I/FGVmBz5oskmjOR8cbXTvoPjX+Pq/T/b1PqpHX0lYm0oCBjXWICA==");
-
 		try {
 			hmac = Mac.getInstance(HMAC_ALGO);
 			hmac.init(new SecretKeySpec(secretKey, HMAC_ALGO));
@@ -39,31 +37,33 @@ public class TokenGenerator {
 
 	public String issueToken(User user) {
 		
-		byte[] userBytes = toJSON(user);
+		byte[] userBytes = toBytes(user);
 		byte[] hash = createHmac(userBytes);
 
 		final StringBuilder builder = new StringBuilder(170);
 
-		builder.append(toBase64(userBytes));
+		builder.append(DatatypeConverter.printBase64Binary(userBytes));
 		builder.append(SEPARATOR);
-		builder.append(toBase64(hash));
+		builder.append(DatatypeConverter.printBase64Binary(hash));
 
 		return builder.toString();
 	}
 	
 	public User parseUserFromToken(String token){
-		if(token == null) return null;
+		if(token == null) {
+			return null;
+		}
 		
 		final String[] parts = token.split(SEPARATOR_SPLITTER);
 		
 		if(parts.length == 2 && parts[0].length() > 0 && parts[1].length() > 0){
 			
-			final byte[] userBytes = fromBase64(parts[0]);
-			final byte[] hash = fromBase64(parts[1]);
+			final byte[] userBytes = DatatypeConverter.parseBase64Binary(parts[0]);
+			final byte[] hash = DatatypeConverter.parseBase64Binary(parts[1]);
 			
 			boolean validHash = Arrays.equals(createHmac(userBytes), hash);
             if (validHash) {
-                final User user = fromJSON(userBytes);
+                final User user = fromBytes(userBytes);
                 return user;
             }
             
@@ -73,12 +73,10 @@ public class TokenGenerator {
 		return null;
 	}
 	
-	private User fromJSON(final byte[] userBytes){
+	private User fromBytes(final byte[] userBytes){
 		
 		try {
-			
 			return new ObjectMapper().readValue(new ByteArrayInputStream(userBytes), User.class);
-			
 		} 
 		catch (JsonParseException e) {
 			e.printStackTrace();
@@ -92,12 +90,9 @@ public class TokenGenerator {
 		return null;
 	}
 	
-	private byte[] toJSON(User u){
-		
+	private byte[] toBytes(User u){
 		try {
-			
 			return new ObjectMapper().writeValueAsBytes(u);
-			
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -105,15 +100,6 @@ public class TokenGenerator {
 		return null;
 		
 	}
-	
-	
-    private String toBase64(byte[] content) {
-        return DatatypeConverter.printBase64Binary(content);
-    }
-
-    private byte[] fromBase64(String content) {
-        return DatatypeConverter.parseBase64Binary(content);
-    }
 
     private synchronized byte[] createHmac(byte[] content) {
         return hmac.doFinal(content);
