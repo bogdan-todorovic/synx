@@ -1,6 +1,6 @@
 (function() {
     angular.module("synxApp")
-        .service("userSvc", ["$http", function($http) {
+        .service("userService", ["$http", function($http) {
 
             var self = this;
             self.urlBase = "rest/users";
@@ -11,6 +11,10 @@
 
             self.register = function(data) {
                 return $http.post(self.urlBase + "/register", data);
+            };
+
+            self.getAllUsers = function() {
+                return $http.get(self.urlBase);
             };
             
         }]);

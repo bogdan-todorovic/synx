@@ -13,6 +13,12 @@
                     url: "/register",
                     templateUrl: "user/register.html",
                     controller: "registerController"
+                })
+
+                .state("users", {
+                    url: "/users",
+                    templateUrl: "user/users.html",
+                    controller: "userController"
                 });
         }
         ]);

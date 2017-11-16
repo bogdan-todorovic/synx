@@ -15,25 +15,28 @@
     width: auto;
 }
 
+/* Default background for all containers*/
+.wrapper {
+    background: #f1f1f1;
+}
+
 /* Login, Registration */
 .member {
     font-weight: normal;
 }
 
 /* Login form */
-.loginContainer > div > div {
-    background: #f1f1f1;
-}
-
-.loginContainer a {
+.login-container a {
     text-decoration: underline;
 }
 
 /* Registration form */
-.registerContainer > div > div {
-    background: #f1f1f1;
+.register-container a {
+    text-decoration: underline;
 }
 
-.registerContainer a {
-    text-decoration: underline;
+/* List of all users page */
+.users-container .user-list {
+    max-height: 500px;
+    overflow-y: auto;
 }

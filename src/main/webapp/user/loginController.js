@@ -2,12 +2,12 @@
 
     angular.module("synxApp")
         .controller("loginController", ["$scope", "$state", "$rootScope",
-            "userSvc",
-            function($scope, $state, $rootScope, userSvc) {
+            "userService",
+            function($scope, $state, $rootScope, userService) {
 
 
                 $scope.login = function() {
-                    userSvc.authenticateUser($scope.user)
+                    userService.authenticateUser($scope.user)
                     .then(function(response) {
                         var user = JSON.stringify(response.data);
                         localStorage.setItem("currentUser", user);

@@ -1,10 +1,10 @@
 (function() {
 
     angular.module("synxApp")
-        .controller("registerController", ["$scope", "$state", "userSvc", function($scope, $state, userSvc) {
+        .controller("registerController", ["$scope", "$state", "userService", function($scope, $state, userService) {
             
             $scope.create = function() {
-                userSvc.register($scope.user)
+                userService.register($scope.user)
                 .then(function(response) {
                     $state.go("login");
                 },

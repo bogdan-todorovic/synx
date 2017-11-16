@@ -56,7 +56,7 @@ public class TokenGenerator {
 		
 		final String[] parts = token.split(SEPARATOR_SPLITTER);
 		
-		if(parts.length == 2 && parts[0].length() > 0 && parts[1].length() > 0){
+		if(parts.length == 2 && parts[0].length() > 0 && parts[1].length() > 0) {
 			
 			final byte[] userBytes = DatatypeConverter.parseBase64Binary(parts[0]);
 			final byte[] hash = DatatypeConverter.parseBase64Binary(parts[1]);
@@ -66,10 +66,7 @@ public class TokenGenerator {
                 final User user = fromBytes(userBytes);
                 return user;
             }
-            
-            
 		}
-		
 		return null;
 	}
 	
