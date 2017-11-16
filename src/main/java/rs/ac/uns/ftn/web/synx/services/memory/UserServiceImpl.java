@@ -60,5 +60,14 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public boolean changeRole(User user, String newRole) {
+		if (newRole.equals("USER") || newRole.equals("MODERATOR") || newRole.equals("ADMIN")) {
+			user.setRole(UserRole.valueOf(newRole));
+			Serializer.save("users.ser", users);
+			return true;
+		}
+		return false;
+	}
 
 }
