@@ -74,7 +74,7 @@ public class UserResource {
 	@PUT
 	@Path("/newrole/{username}")
 	@Consumes(MediaType.TEXT_PLAIN)
-	public Response changeRole(@PathParam("username") String username, String newRole) {
+	public Response changeRole(String newRole, @PathParam("username") String username) {
 		
 		User user = userService.findOne(username);
 		if (user == null) {
