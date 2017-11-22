@@ -63,8 +63,13 @@
             <div class="collapse navbar-collapse" id="navDropdown">
                 <!-- Page navigation -->
                 <ul class="nav navbar-nav">
+                    <!-- Subforum page for all users -->
                     <li><a ui-sref="subforums">Subforums</a></li>
-                    <li><a ui-sref="users">Users</a></li>
+                    
+                    <!-- Users page for admins -->
+                    <li ng-if="$root.user.role === 'ADMIN'">
+                        <a ui-sref="users">Users</a>
+                    </li>
                 </ul>
 
                 <!-- Registration part -->
