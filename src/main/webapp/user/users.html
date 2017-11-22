@@ -5,10 +5,34 @@
             <h2>Current users</h2>
             
             <ul class="list-group user-list">
-                <li class="list-group-item" ng-repeat="user in users">
-                    {{user.username}}
+                <li class="list-group-item" ng-repeat="user in users" ng-if="user.role!='ADMIN'">
+                    {{user.username}}({{user.role}})
+
+                    <div class="right-side">
+                        <!-- New role selector -->
+                        <select id="role-selector" ng-model="user.newRole">
+                            <option value="">
+                                NEW ROLE
+                            </option>
+                            
+                            <option ng-if="user.role!='USER'" value="USER">
+                                USER
+                            </option>
+                            
+                            <option ng-if="user.role!='MODERATOR'" value="MODERATOR">
+                                MODERATOR
+                            </option>
+                            
+                            <option value="ADMIN">
+                                ADMIN
+                            </option>
+                        </select>
+                    </div>
                 </li>
             </ul>
+            <div class="btn-container">
+                <button class="btn btn-primary btn-save" ng-click="updateRoles()">Update</button>
+            </div>
         </div>
     </div>
 </div>
