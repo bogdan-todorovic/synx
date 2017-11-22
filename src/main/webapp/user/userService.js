@@ -16,6 +16,20 @@
             self.getAllUsers = function() {
                 return $http.get(self.urlBase);
             };
+
+
+            self.updateRoles = function(id, newRole) {
+                var req = {
+                    method: 'PUT',
+                    url: self.urlBase + "/newrole/" + id,
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    data: newRole
+                }
+               
+                return $http(req);
+            };
             
         }]);
 })();
