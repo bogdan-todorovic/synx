@@ -83,7 +83,7 @@ public class UserResource {
 		
 		boolean roleChanged = userService.changeRole(user, newRole);
 		if (roleChanged) {
-			return Response.status(Response.Status.OK).build();
+			return Response.status(Response.Status.OK).entity(user).build();
 		}
 		return Response.status(Response.Status.BAD_REQUEST).build();
 			
