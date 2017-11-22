@@ -1,6 +1,6 @@
 (function() {
     angular.module("synxApp")
-        .controller("userController", ["$scope", "$state", "userService", function($scope, $state, userService) {
+        .controller("userController", ["$scope", "userService", function($scope, userService) {
 
             
             userService.getAllUsers()
