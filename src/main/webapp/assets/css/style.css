@@ -15,6 +15,11 @@
     width: auto;    
 }
 
+/* Active link styling */
+.active {
+    font-weight: bolder;
+}
+
 /* Default background for all containers*/
 .wrapper {
     background: #f1f1f1;
