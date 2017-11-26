@@ -18,7 +18,7 @@
                 .state("users", {
                     url: "/users",
                     templateUrl: "user/users.html",
-                    controller: "userController"
+                    controller: "usersController"
                 });
         }
         ]);
