@@ -1,90 +1,21 @@
-<div class="generic-container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">New Subforum</h3>
+<div class="container subforums-container">
+    <div class="row">
+        <!-- subscribe/unsubscribe -->
+        <div class="col-xs-12 col-sm-2 col-lg-1 button-wrapper">
+            <button class="btn btn-success btn-sm">
+                Subscribe
+            </button>
         </div>
-        <div class="panel-body">
-            <div class="form-container">
-                <div class="alert alert-success" role="alert" ng-if="successMessage">
-                    {{successMessage}}
-                </div>
-                <div class="alert alert-danger" role="alert" ng-if="errorMessage">
-                    {{errorMessage}}
-                </div>
-                <div class="row">
-                    <form name="myForm" class="form-group col-md-12">
-                        <label class="col-md-2 control-label" for="title">Title</label>
-                        <div class="col-md-7">
-                            <input type="text" id="title" name="title" ng-model="subforum.title" 
-                            ng-disabled="!createOrEdit" class="form-control input-sm" placeholder="Title" required/>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label" for="descripiton">Description</label>
-                        <div class="col-md-7">
-                            <input type="text" id="descripiton" ng-model="subforum.description" class="form-control input-sm" placeholder="Description" required/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label" for="icon">Icon</label>
-                        <div class="col-md-7">
-                            <input type="text" id="icon" ng-model="subforum.icon" class="form-control input-sm" placeholder="Icon" required/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label" for="rules">Rules</label>
-                        <div class="col-md-7">
-                            <input type="text" id="rules" ng-model="subforum.rules" class="form-control input-sm" placeholder="Rules" required/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-actions" align="center">
-                        <button type="button" ng-click="submit()" class="btn btn-primary btn-md">
-                            {{createOrEdit ? "Create" : "Update"}}
-                        </button>
-                        <button type="button" ng-click="resetForm()" class="btn btn-danger btn-md">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div ng-repeat="sf in subforums">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td class="col-md-2" style="border: none;">{{sf.icon}}</td>
-                            <th class="col-md-2" style="border: none;">{{sf.title}}</th>
-                            <td class="col-md-2" style="border: none;">{{sf.description}}</td>
-                            <td class="col-md-2" style="border: none;">
-                                <ul ng-repeat="rule in sf.rules">
-                                    <li>{{rule}}</li>
-                                </ul>
-                            </td>
-                            <td class="col-md-2" style="border: none;">{{sf.leadModerator}}</td>
-                            <td style="border: none;">
-                                <button type="button" class="btn btn-success" ng-click="edit(sf)">Edit</button>
-                            </td>
-                            <td style="border: none;">
-                                <button type="button" class="btn btn-danger" ng-click="delete(sf)">
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <!-- title and description container -->
+        <div class="col-xs-12 col-sm-10 col-lg-7 title-desc-wrapper">
+            <!-- title -->
+            <h4>
+                <a href="">Subforum title</a>
+            </h4>
+            <!-- description -->
+            <p class="description">
+                Short subforum description
+            </p>
         </div>
     </div>
 </div>
