@@ -7,6 +7,17 @@
                     url: "/subforums",
                     templateUrl: "subforum/subforums.html",
                     controller: "subforumsController"
+                })
+
+                .state("subforum", {
+                    url: "/subforums/{title}",
+                    templateUrl: "subforum/subforum.html",
+                    controller: "subforumController",
+                    resolve: {
+                        subforumPromise: function(subforumService, $transition$) {
+                            return subforumService.getSubforum($transition$.params().title);
+                        }
+                    }
                 });
         }
         ]);
