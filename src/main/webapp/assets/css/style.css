@@ -1,3 +1,4 @@
+/* Normalization */
 * {
     padding: 0;
     margin: 0;
@@ -8,11 +9,10 @@
 .navbar-brand {
     padding: 0;
 }
-
 .navbar-brand > img {
-    padding: 1px;
+    padding: 2px;
     height: 48px;
-    width: auto;
+    width: auto;    
 }
 
 /* Default background for all containers*/
@@ -25,32 +25,74 @@
     font-weight: normal;
 }
 
-/* Login form */
+/* 
+    Login form 
+*/
 .login-container a {
     text-decoration: underline;
 }
 
-/* Registration form */
+/* 
+    Registration form 
+*/
 .register-container a {
     text-decoration: underline;
 }
 
-/* List of all users page */
+/* 
+    List of all users page 
+*/
 .users-container .user-list {
     max-height: 500px;
-    overflow-y: auto;
+    overflow-y: auto; 
 }
 
+/* Positioning the dropdown window */
 .users-container .right-side {
     float: right;
 }
 
+/* Fixed dropdown window size */
 .users-container #role-selector {
     border-radius: 5px;
     width: 109px;
 }
 
+/* Positioning the update button */
 .users-container .btn-container {
     text-align: right;
     margin-bottom: 15px;
+}
+
+/* 
+    Subforums page 
+*/
+.subforums-container > div {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Vertically aligned button in a div */
+.subforums-container .button-wrapper {
+    display: inline-block;
+    float: none;
+}
+.subforums-container .title-desc-wrapper {
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+}
+
+/* Fixed width for subcribe/unsubscribe button */
+.subforums-container .button-wrapper > button {
+    width: 92px;
+}
+
+/* Description paragraph styling */
+.subforums-container .description {
+    overflow-wrap: break-word;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    background: #eee;
 }
