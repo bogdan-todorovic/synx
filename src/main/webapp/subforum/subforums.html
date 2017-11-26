@@ -1,5 +1,5 @@
 <div class="container subforums-container">
-    <div class="row">
+    <div class="row" ng-repeat="subforum in subforums">
         <!-- subscribe/unsubscribe -->
         <div class="col-xs-12 col-sm-2 col-lg-1 button-wrapper">
             <button class="btn btn-success btn-sm">
@@ -10,11 +10,13 @@
         <div class="col-xs-12 col-sm-10 col-lg-7 title-desc-wrapper">
             <!-- title -->
             <h4>
-                <a href="">Subforum title</a>
+                <a ui-sref="subforum({ title: subforum.title})">
+                    {{subforum.title}}
+                </a>
             </h4>
             <!-- description -->
             <p class="description">
-                Short subforum description
+                {{subforum.description}}
             </p>
         </div>
     </div>
