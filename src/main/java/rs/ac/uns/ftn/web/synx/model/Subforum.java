@@ -11,7 +11,7 @@ public class Subforum implements Serializable {
 	private String title;
 	private String description;
 	private String icon;
-	private List<String> rules;
+	private List<String> rules = new ArrayList<>();
 	private String leadModerator;
 	private List<String> moderators = new ArrayList<>();
 	
