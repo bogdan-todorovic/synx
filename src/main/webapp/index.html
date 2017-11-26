@@ -49,7 +49,7 @@
             <!-- Logo and name -->
             <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="home">
-                    <img src="assets/images/synx-logo.png" />
+                    <img src="assets/images/synx-logo-new.png" />
                 </a>
                 <!-- Open/close menu button for mobile devices  -->
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navDropdown">
@@ -64,8 +64,9 @@
                 <!-- Page navigation -->
                 <ul class="nav navbar-nav">
                     <!-- Subforum page for all users -->
-                    <li><a ui-sref="subforums">Subforums</a></li>
-                    
+                    <li>
+                        <a ui-sref="subforums">Subforums</a>
+                    </li>
                     <!-- Users page for admins -->
                     <li ng-if="$root.user.role === 'ADMIN'">
                         <a ui-sref="users">Users</a>
@@ -80,7 +81,6 @@
                     <li ng-if="$root.user == null">
                         <a ui-sref="login">Log In</a>
                     </li>
-
                     <li ng-controller="logoutController" ng-if="$root.user != null">
                         <a ui-sref="home" ng-click="logout()">Log out</a>
                     </li>
