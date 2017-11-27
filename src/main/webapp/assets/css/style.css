@@ -72,6 +72,48 @@
 /* 
     Subforums page 
 */
+.search-container {
+    border-radius: 5px;
+}
+.search-container .input-group {
+    padding: 5px;
+    margin: 5px 0;
+}
+.search-container .create-group {
+    float: right;
+}
+
+/* Create form */
+
+/* Hiding the <input> */
+.create-subforum-form .inputfile {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1;
+}
+/* Styling the <label> which act as an input */
+.create-subforum-form .inputfile + label {
+    max-width: 40%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    background-color: buttonface;
+    border-radius: 4px;
+    text-align: center;
+}
+/* Indicating when the label is focused */
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+/* Subforums container */
 .subforums-container > div {
     margin-bottom: 10px;
     border-bottom: 1px solid #ddd;
