@@ -33,6 +33,16 @@ public class UserResource {
 		List<User> users = userService.findAll();
 		return Response.status(Response.Status.OK).entity(users).build();
 	}
+	
+	@PermitAll
+	@GET
+	@Path("/moderators")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAllModerators() {
+		
+		List<User> moderators = userService.findAllModerators();
+		return Response.status(Response.Status.OK).entity(moderators).build();
+	}
 
 	@PermitAll
 	@POST
@@ -70,10 +80,12 @@ public class UserResource {
 		return Response.status(Response.Status.OK).header("x-auth-token", token).entity(authenticatedUser).build();
 	}
 	
+	//@PermitAll
 	@RolesAllowed("ADMIN")
 	@PUT
 	@Path("/newrole/{username}")
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response changeRole(String newRole, @PathParam("username") String username) {
 		
 		User user = userService.findOne(username);
