@@ -70,4 +70,15 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	@Override
+	public List<User> findAllModerators() {
+		List<User> moderators = new ArrayList<>();
+		for (User user : users.values()) {
+			if (user.getRole() == UserRole.MODERATOR) {
+				moderators.add(user);
+			}
+		}
+		return moderators;
+	}
+
 }
