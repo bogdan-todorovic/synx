@@ -22,7 +22,7 @@
 
 /* Default background for all containers*/
 .wrapper {
-    background: #f1f1f1;
+    background: #f8f8f8;
 }
 
 /* Login, Registration */
@@ -74,6 +74,7 @@
 */
 .search-container {
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 .search-container .input-group {
     padding: 5px;
@@ -84,6 +85,16 @@
 }
 
 /* Create form */
+/* Positioning the close button to the right corner*/
+.create-subforum-form .header > h2 {
+    display: inline-block;
+    text-align: left;
+}
+.create-subforum-form .header > button {
+    float: right;
+    margin-top: 1em;
+    margin-bottom: 10px;
+}
 
 /* Hiding the <input> */
 .create-subforum-form .inputfile {
@@ -96,7 +107,7 @@
 }
 /* Styling the <label> which act as an input */
 .create-subforum-form .inputfile + label {
-    max-width: 40%;
+    width: 40%;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
@@ -111,6 +122,16 @@
 .inputfile:focus + label {
 	outline: 1px dotted #000;
 	outline: -webkit-focus-ring-color auto 5px;
+}
+
+/* Fixing image size */
+.create-subforum-form .image-preview > img {
+    max-width: 40%;
+}
+
+/* Styling list of checkboxes for moderators */
+.create-subforum-form .moderator-checkbox {
+    display: block;
 }
 
 /* Subforums container */

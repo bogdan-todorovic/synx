@@ -12,18 +12,21 @@
             </div>
         </div>
         <div class="col-xs-1 input-group create-group">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" ng-click="toggleShowHide()">
                 Add
             </button>
         </div>
     </div>
 </div>
 <!-- Create subforum form -->
-<div class="container create-subforum-form">
+<div class="container create-subforum-form" ng-show="show">
     <div class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-4 wrapper">
             <form ng-submit="create()" role="form">
-                <h2>New subforum</h2>
+                <div class="header">
+                    <h2>New subforum</h2>
+                    <button class="btn btn-danger" ng-click="toggleShowHide()">Close</button>
+                </div>
                 <div class="alert alert-danger" ng-if="alertMessage">
                     {{alertMessage}}
                 </div>

@@ -12,10 +12,15 @@
                             console.log("Unable to load subforums");
                         }
                     );
-                 
-                 // instance for new subforum
-                $scope.newSf = {};
                 
+                // toggle show/hide form
+                $scope.show = false;
+                $scope.toggleShowHide = function() {
+                    $scope.show = !$scope.show;
+                }
+                    
+                // instance for new subforum
+                $scope.newSf = {};
 
                 // the file as a URL 
                 // representing the file's data as a base64 encoded string
@@ -31,7 +36,6 @@
                 $scope.newSf.rules = [];
                 $scope.addNewRule = function() {
                     $scope.newSf.rules.push("");
-                    console.log($scope.newSf.rules);
                 }
 
                 // method which removes previously added rule from the rules list
