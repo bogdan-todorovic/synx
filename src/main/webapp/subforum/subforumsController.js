@@ -67,7 +67,7 @@
                 $scope.create = function() {
                     subforumService.createSubforum($scope.newSf)
                         .then(function(response) {
-                            console.log(response.data);
+                            $scope.subforums.push(response.data);
                         }, function(error) {
                             $scope.alertMessage = "Subforum with that title already exists";
                             console.log(error.data);
