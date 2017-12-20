@@ -17,6 +17,9 @@
                 return $http.get(self.urlBase);
             };
 
+            self.getAllModerators = function() {
+                return $http.get(self.urlBase + "/moderators");
+            };
 
             self.updateRoles = function(id, newRole) {
                 var req = {
