@@ -1,24 +1,27 @@
 (function() {
     angular.module("synxApp")
-        .controller("subforumsController", ["$scope", "$rootScope", "fileReaderService", "subforumService",
-            function($scope, $rootScope, fileReaderService, subforumService) {
+        .controller("subforumsController", ["$scope", "$rootScope", "fileReaderService", "subforumService", "userService", function($scope, $rootScope, fileReaderService, subforumService, userService) {
 
                 // Load all subforums
                 subforumService.getAllSubforums()
                     .then(function(response) {
                             $scope.subforums = response.data;
                         },
-                        function() {
+                        function(error) {
                             console.log("Unable to load subforums");
                         }
                     );
                 
-                // toggle show/hide form
-                $scope.show = false;
-                $scope.toggleShowHide = function() {
-                    $scope.show = !$scope.show;
-                }
-                    
+                // load all moderators
+                userService.getAllModerators()
+                    .then(function(response) {
+                            $scope.moderators = response.data;
+                        }, 
+                        function(error) {
+                            console.log(error);
+                        }
+                    );
+
                 // instance for new subforum
                 $scope.newSf = {};
 
@@ -43,10 +46,28 @@
                     $scope.newSf.rules.splice(index, 1);
                 }
 
+                // managing list of selected/added moderators
+                $scope.newSf.moderators = [];
+                // toggle selection for a given moderator by username
+                $scope.toggleModeratorSelection = function(moderator) {
+                    var index = $scope.newSf.moderators.indexOf(moderator);
+                    
+                    // Is currently selected
+                    if(index !== -1) {
+                        $scope.newSf.moderators.splice(index, 1);
+                    }
+                     // Is newly selected
+                    else { 
+                        $scope.newSf.moderators.push(moderator);
+                    }
+
+                    console.log($scope);
+                }
+
                 $scope.create = function() {
                     subforumService.createSubforum($scope.newSf)
                         .then(function(response) {
-                            console.log("succesfully created");
+                            console.log(response.data);
                         }, function(error) {
                             $scope.alertMessage = "Subforum with that title already exists";
                             console.log(error.data);
