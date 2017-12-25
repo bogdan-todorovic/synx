@@ -1,1 +1,25 @@
-sidebar
+<div id="sidebar" class="wrapper">
+    <!-- Container for general information about subforum -->
+    <div class="standard-container">
+        <h3 id="title">{{subforum.title}}</h3>
+        <p>{{subforum.description}}</p>
+    </div>
+    <!-- Rules container -->
+    <div class="standard-container">
+        <h3>Rules</h3>
+        <ul class="rules-list">
+            <li ng-repeat="rule in subforum.rules">
+                {{rule}}
+            </li>
+        </ul>
+    </div>
+    <!-- Moderators container -->
+    <div class="standard-container">
+        <h3>Moderators</h3>
+        <ul class="moderators-list">
+            <li ng-repeat="moderator in subforum.moderators">
+                {{moderator}}
+            </li>
+        </ul>
+    </div>
+</div>
