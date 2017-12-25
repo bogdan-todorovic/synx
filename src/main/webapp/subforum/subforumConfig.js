@@ -18,6 +18,20 @@
                             return subforumService.getSubforum($transition$.params().title);
                         }
                     }
+                })
+                
+                .state("subforum.detail", {
+                    views: {
+                        "header": {
+                            templateUrl: "subforum/subforum-views/header.html"
+                        },
+                        "mainContent": {
+                            templateUrl: "subforum/subforum-views/mainContent.html"
+                        },
+                        "sidebar": {
+                            templateUrl: "subforum/subforum-views/sidebar.html"
+                        }
+                    }
                 });
         }
         ]);
