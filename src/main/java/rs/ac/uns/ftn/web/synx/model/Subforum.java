@@ -14,18 +14,18 @@ public class Subforum implements Serializable {
 	private List<String> rules = new ArrayList<>();
 	private String leadModerator;
 	private List<String> moderators = new ArrayList<>();
-	
-	// Lista tema
+	private List<String> topics = new ArrayList<>();
 	
 	public Subforum() {	}
 	
-	public Subforum(String title, String description, String icon, List<String> rules, String lead, List<String> moderators) {
+	public Subforum(String title, String description, String icon, List<String> rules, String lead, List<String> moderators, List<String> topics) {
 		this.title = title;
 		this.description = description;
 		this.icon = icon;
 		this.rules = rules;
 		this.leadModerator = lead;
 		this.moderators = moderators;
+		this.topics = topics;
 	}
 
 	public String getTitle() {
@@ -74,6 +74,14 @@ public class Subforum implements Serializable {
 
 	public void setModerators(List<String> moderators) {
 		this.moderators = moderators;
+	}
+
+	public List<String> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(List<String> topics) {
+		this.topics = topics;
 	}
 	
 }
