@@ -8,7 +8,7 @@ import rs.ac.uns.ftn.web.synx.util.TopicType;
 public class Topic implements Serializable {
 
 	private static final long serialVersionUID = -6330537221980047310L;
-	private Subforum subforum;
+	private String subforum;
 	private String title;
 	private TopicType topicType;
 	private String author;
@@ -19,7 +19,7 @@ public class Topic implements Serializable {
 	
 	public Topic() {}
 
-	public Topic(Subforum subforum, String title, TopicType topicType, String author, String content, Date creationDate,
+	public Topic(String subforum, String title, TopicType topicType, String author, String content, Date creationDate,
 			int numberOfLikes, int numberOfDislikes) {
 		super();
 		this.subforum = subforum;
@@ -32,11 +32,11 @@ public class Topic implements Serializable {
 		this.numberOfDislikes = numberOfDislikes;
 	}
 
-	public Subforum getSubforum() {
+	public String getSubforum() {
 		return subforum;
 	}
 
-	public void setSubforum(Subforum subforum) {
+	public void setSubforum(String subforum) {
 		this.subforum = subforum;
 	}
 
