@@ -12,18 +12,18 @@ import rs.ac.uns.ftn.web.synx.util.Serializer;
 public class SubforumServiceImpl implements SubforumService {
 
 	private Map<String, Subforum> subforums = MyDatabase.getSubforums();
-
+	
+	@Override
+	public List<Subforum> findAll() {
+		return new ArrayList<>(subforums.values());
+	}
+	
 	@Override
 	public Subforum findOne(String id) {
 		if (subforums.containsKey(id)) {
 			return subforums.get(id);
 		}
 		return null;
-	}
-
-	@Override
-	public List<Subforum> findAll() {
-		return new ArrayList<>(subforums.values());
 	}
 
 	@Override
@@ -51,6 +51,17 @@ public class SubforumServiceImpl implements SubforumService {
 		Subforum updatedSubforum = create(newSubforum);
 		Serializer.save("subforums.ser", subforums);
 		return updatedSubforum;
+	}
+
+	@Override
+	public Subforum addTopic(String subforumId, String topicId) {
+		Subforum subforum = findOne(subforumId);
+		if (subforum == null) {
+			return null;
+		}
+		subforum.getTopics().add(topicId);
+		Serializer.save("subforums.ser", subforums);
+		return subforum;
 	}
 
 }
