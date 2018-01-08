@@ -194,6 +194,61 @@
 }
 
 /*
+    Main content
+*/
+.subforum-container #subforum-main-content {
+    padding: 5px;
+}
+.subforum-container #subforum-main-content > div {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 16px;
+}
+/* Styling likes and dislikes container */
+.subforum-container #subforum-main-content a.likes:hover {
+    text-decoration: none;
+}
+/* on hover change the color of glyphicon */
+.subforum-container #subforum-main-content a.likes:hover > span {
+    color: #777;
+} 
+
+.subforum-container #subforum-main-content .glyphicon {
+    display: table;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #ccc;
+}
+/* positioning glyphicons */
+.subforum-container #subforum-main-content .glyp-up {
+    top: 5px;
+}
+.subforum-container #subforum-main-content .glyp-down {
+    top: -4px;
+}
+/* positioning and styling number of likes */
+.subforum-container #subforum-main-content h5 {
+    margin: 5px 0px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+/* fixing topic icon size */
+.subforum-container #subforum-main-content .icon > img {
+    height: 64px;
+    width: auto;
+    border: 1px solid #ccc;
+}
+/* style for the topic title */
+.subforum-container #subforum-main-content a.title {
+    font-size: 18px;
+    text-decoration: none;
+}
+.subforum-container #subforum-main-content p {
+    font-size: 12px;
+}
+
+/*
     Sidebar
 */
 .subforum-container #sidebar {
