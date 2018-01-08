@@ -16,6 +16,9 @@
                     resolve: {
                         subforumPromise: function(subforumService, $transition$) {
                             return subforumService.getSubforum($transition$.params().title);
+                        },
+                        topicsPromise: function(topicService, $transition$) {
+                            return topicService.getTopicsBySubforum($transition$.params().title);
                         }
                     }
                 })
