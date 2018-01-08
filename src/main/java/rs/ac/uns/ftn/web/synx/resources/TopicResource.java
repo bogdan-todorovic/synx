@@ -34,6 +34,15 @@ public class TopicResource {
 	
 	@PermitAll
 	@GET
+	@Path("/subforum/{subforumId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAllTopicsBySubforum(@PathParam("subforumId") String subforumId) {
+		List<Topic> topics = topicService.findAllBySubforumId(subforumId);
+		return Response.ok(topics).build();
+	}
+	
+	@PermitAll
+	@GET
 	@Path("/{title}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTopic(@PathParam("title") String title) {

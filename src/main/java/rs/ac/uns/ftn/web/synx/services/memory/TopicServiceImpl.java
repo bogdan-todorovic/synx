@@ -35,6 +35,8 @@ public class TopicServiceImpl implements TopicService {
 		if (topics.containsKey(entity.getTitle())) {
 			return null;
 		}
+		// find the subforum and add topic
+		// return updated subforum
 		Subforum updatedSubforum = subforumService.addTopic(entity.getSubforum(), entity.getTitle());
 		if (updatedSubforum == null) {
 			return null;
@@ -49,6 +51,18 @@ public class TopicServiceImpl implements TopicService {
 	public void remove(String id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Topic> findAllBySubforumId(String subforumId) {
+		List<Topic> allTopics = findAll();
+		List<Topic> topicsFromSubforum = new ArrayList<>();
+		for(Topic t : allTopics) {
+			if (t.getSubforum().equals(subforumId)) {
+				topicsFromSubforum.add(t);
+			}
+		}
+		return topicsFromSubforum;
 	}
 
 }
