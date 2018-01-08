@@ -1,1 +1,24 @@
-main content
+<div class="wrapper">
+    <div id="subforum-main-content" ng-repeat="topic in topics">
+        <div>
+            {{$index + 1}}
+        </div>
+        <div>
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+            </a>
+            <h5>1</h5>
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+            </a>
+        </div>
+        <div class="icon">
+            <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType == 'LINK'">
+            <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType != 'LINK'">
+        </div>
+        <div>
+            <a href="" class="title">{{topic.title}}</a>
+            <p>submitted by {{topic.author}}</p>
+        </div>
+    </div>
+</div>
