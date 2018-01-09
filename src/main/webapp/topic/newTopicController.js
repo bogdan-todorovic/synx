@@ -1,9 +1,9 @@
 (function() {
     angular.module("synxApp")
-        .controller("newTopicController", ["$scope", "subforumPromise", "previousState", "$state", "fileReaderService", function($scope, subforumPromise, previousState, $state, fileReaderService) {
+        .controller("newTopicController", ["$scope", "previousState", "$state", "fileReaderService", function($scope, previousState, $state, fileReaderService) {
             
             // subforum data inherited from parent state
-            $scope.subforum = subforumPromise.data;
+            console.log($scope.subforum);
 
             // on form close redirect to subforum page
             $scope.closeForm = function() {
