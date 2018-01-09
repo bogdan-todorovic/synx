@@ -9,7 +9,7 @@
                         // checking if something is selected
                         if(elements[0].files[0]) { 
                             scope.chosenFile = elements[0].files[0];
-                            scope.loadFile();
+                            scope.loadFile(scope.chosenFile);
                         }
                     });
                 }
