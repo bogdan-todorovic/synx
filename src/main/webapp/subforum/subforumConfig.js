@@ -35,6 +35,26 @@
                             templateUrl: "subforum/subforum-views/sidebar.html"
                         }
                     }
+                })
+
+                .state("subforum.newtopic", {
+                    url: "/newtopic",
+                    views: {
+                        "newtopic": {   
+                            templateUrl: "topic/newTopicForm.html",
+                            controller: "newTopicController"
+                        }
+                    },
+                    resolve: {
+                        previousState: ["$state", function($state) {
+                            var currentStateData = {
+                                name: $state.current.name,
+                                params: $state.params,
+                                url: $state.href($state.current.name, $state.params)
+                            };
+                            return currentStateData;
+                        }]
+                    }
                 });
         }
         ]);
