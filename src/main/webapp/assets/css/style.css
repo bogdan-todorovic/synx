@@ -292,6 +292,16 @@
 /* #endregion */
 
 /* #region New Topic Form */
+.create-topic-container .header > h3 {
+    display: inline-block;
+    text-align: left;
+}
+.create-topic-container .header > button {
+    float: right;
+    margin-top: 1em;
+    margin-bottom: 10px;
+}
+
 .create-topic-container .inputfile {
     width: 0.1px;
 	height: 0.1px;
@@ -317,5 +327,8 @@
 .inputfile:focus + label {
 	outline: 1px dotted #000;
 	outline: -webkit-focus-ring-color auto 5px;
+}
+.create-topic-container .image-preview > img {
+    max-width: 40%;
 }
 /* endregion */
