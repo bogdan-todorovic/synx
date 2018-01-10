@@ -12,13 +12,13 @@
                 </div>
                 <div class="form-group">
                     <label for="type">Topic type</label>
-                    <select id="type" class="form-control" ng-model="topic.type">
+                    <select id="type" class="form-control" ng-model="topic.topicType">
                         <option value="IMAGE">Image</option>
                         <option value="LINK">Link</option>
                         <option value="TEXT">Text</option>
                     </select>
                 </div>
-                <div class="form-group" ng-if="topic.type === 'IMAGE'">
+                <div class="form-group" ng-if="topic.topicType === 'IMAGE'">
                     <label>Image</label>
                     <input type="file" id="file" class="inputfile" accept="image/*" file-model="topic.content">
                     <label for="file" class="file-label">
@@ -30,7 +30,7 @@
                         <img ng-src="{{topic.content}}">
                     </div>
                 </div>
-                <div class="form-group" ng-if="topic.type === 'LINK' || topic.type === 'TEXT'">
+                <div class="form-group" ng-if="topic.topicType === 'LINK' || topic.topicType === 'TEXT'">
                     <label for="text">Text</label>
                     <textarea type="text" id="text" class="form-control" ng-model="topic.content" placeholder="Text"></textarea>
                 </div>

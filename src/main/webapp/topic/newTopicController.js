@@ -8,6 +8,7 @@
             }
 
             $scope.topic = {};
+            // getting subforum title from parent scope
             $scope.topic.subforum = $scope.subforum.title;
             // the file as a URL 
             // representing the file's data as a base64 encoded string
