@@ -27,7 +27,7 @@
 
                 // the file as a URL 
                 // representing the file's data as a base64 encoded string
-                $scope.loadFile = function () {
+                $scope.loadFile = function (f) {
                     fileReaderService.readAsDataUrl($scope.chosenFile, $scope)
                         .then(function(result) {
                             $scope.newSf.icon = result;
