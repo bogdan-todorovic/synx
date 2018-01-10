@@ -199,7 +199,17 @@
 */
 .subforum-container #subforum-main-content {
     padding: 5px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
 }
+
+.subforum-container #subforum-main-content:first-child {
+    border-top: 1px solid #eee;
+}
+.subforum-container #subforum-main-content:last-child {
+    border-bottom: 1px solid #eee;
+}
+
 .subforum-container #subforum-main-content > div {
     display: inline-block;
     margin: 0 5px;
@@ -312,7 +322,7 @@
 }
 /* Styling the <label> which act as an input */
 .create-topic-container .inputfile + label {
-    width: 40%;
+    width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
