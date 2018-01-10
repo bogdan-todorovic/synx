@@ -13,8 +13,9 @@
             </a>
         </div>
         <div class="icon">
-            <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType == 'LINK'">
-            <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType != 'LINK'">
+            <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType === 'LINK'">
+            <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType === 'TEXT'">
+            <img ng-src={{topic.content}} alt="oops" ng-if="topic.topicType === 'IMAGE'">
         </div>
         <div>
             <a href="" class="title">{{topic.title}}</a>
