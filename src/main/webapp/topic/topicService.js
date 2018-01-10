@@ -8,5 +8,9 @@
             self.getTopicsBySubforum = function(id) {
                 return $http.get(self.baseUrl + "/subforum/" + id);
             };
+
+            self.createTopic = function(topic) {
+                return $http.post(self.baseUrl, topic);
+            }
         }]);
 })();
