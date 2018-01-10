@@ -237,7 +237,7 @@
 /* fixing topic icon size */
 .subforum-container #subforum-main-content .icon > img {
     height: 64px;
-    width: auto;
+    width: 64px;
     border: 1px solid #ccc;
 }
 /* style for the topic title */
@@ -331,4 +331,4 @@
 .create-topic-container .image-preview > img {
     max-width: 40%;
 }
-/* endregion */
+/* #endregion */
