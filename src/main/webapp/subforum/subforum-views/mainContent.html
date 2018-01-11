@@ -18,7 +18,7 @@
             <img ng-src={{topic.content}} alt="oops" ng-if="topic.topicType === 'IMAGE'">
         </div>
         <div>
-            <a href="" class="title">{{topic.title}}</a>
+            <a href="" class="title" ui-sref="topic({title: topic.title})">{{topic.title}}</a>
             <p>submitted by {{topic.author}}</p>
         </div>
     </div>
