@@ -166,8 +166,6 @@
 /* #endregion */
 
 /* #region Single subforum page */
-
-
 /*
     Header
 */
@@ -340,5 +338,66 @@
 }
 .create-topic-container .image-preview > img {
     max-width: 40%;
+}
+/* #endregion */
+
+/* #region Topic page */
+.topic-container header {
+    border-bottom: 1px solid #ccc;
+}
+
+.topic-container .likes-container, .topic-container .title {
+    display: inline-block;
+}
+/* Styling likes and dislikes container */
+.topic-container  a.likes:hover {
+    text-decoration: none;
+}
+/* on hover change the color of glyphicon */
+.topic-container a.likes:hover > span {
+    color: #777;
+} 
+
+.topic-container .glyphicon {
+    display: table;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #ccc;
+}
+
+/* styling for number of likes */
+.topic-container h5 {
+    margin: 5px 0px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+
+.topic-container .title {
+    padding: 10px;
+}
+.topic-container .title > h4 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+.topic-container .title > p {
+    font-size: 12px;
+}
+.topic-container .content {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.topic-container .content  img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.topic-container .content p {
+    width: 300px;
+    word-wrap: break-word;
+    padding: 5px;
+    border: 1px solid #ccc;
 }
 /* #endregion */

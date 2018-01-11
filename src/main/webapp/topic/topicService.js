@@ -12,5 +12,9 @@
             self.createTopic = function(topic) {
                 return $http.post(self.baseUrl, topic);
             }
+
+            self.getTopic = function(id) {
+                return $http.get(self.baseUrl + "/" + id)
+            }
         }]);
 })();
