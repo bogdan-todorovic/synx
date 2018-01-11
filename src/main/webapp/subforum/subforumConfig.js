@@ -10,7 +10,6 @@
                 })
 
                 .state("subforum", {
-                    url: "/subforums/{title}",
                     templateUrl: "subforum/subforum.html",
                     controller: "subforumController",
                     resolve: {
@@ -24,6 +23,7 @@
                 })
                 
                 .state("subforum.detail", {
+                    url: "/subforums/{title}",
                     views: {
                         "header": {
                             templateUrl: "subforum/subforum-views/header.html"
