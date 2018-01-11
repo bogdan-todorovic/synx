@@ -1,0 +1,28 @@
+<div class="container topic-container">
+    <header>
+        <div class="likes-container">
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+            </a>
+            <h5>1</h5>
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+            </a>
+        </div>
+        <div class="title">
+            <h4>{{topic.title}}</h4>
+            <p>submited by {{topic.author}}</p>
+        </div>
+        <div class="content">
+            <div ng-if="topic.topicType === 'IMAGE'">
+                <img ng-src="{{topic.content}}" alt="can't find an image">
+            </div>
+            <div ng-if="topic.topicType === 'LINK'">
+                <a href="{{topic.content}}">{{topic.content}}</a>
+            </div>
+            <div ng-if="topic.topicType ==='TEXT'">
+                <p>{{topic.content}}</p>
+            </div>
+        </div>
+    </header>
+</div>
