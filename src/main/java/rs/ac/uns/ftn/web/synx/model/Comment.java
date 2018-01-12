@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.web.synx.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Comment implements Serializable {
 	private String author;
 	private Date creationDate;
 	private String parentComment;
-	private List<String> subcomments;
+	private List<String> subcomments = new ArrayList<>();
 	private String content;
 	private int numberOfLikes;
 	private int numberOfDislikes;

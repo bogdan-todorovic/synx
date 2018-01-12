@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.web.synx.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Topic implements Serializable {
 	private Date creationDate;
 	private int numberOfLikes;
 	private int numberOfDislikes;
-	private List<String> comments;
+	private List<String> comments = new ArrayList<>();
 	
 	public Topic() {}
 
