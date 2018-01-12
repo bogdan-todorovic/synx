@@ -65,4 +65,15 @@ public class TopicServiceImpl implements TopicService {
 		return topicsFromSubforum;
 	}
 
+	@Override
+	public Topic addComment(String topicId, String commentId) {
+		Topic topic = findOne(topicId);
+		if (topic == null) {
+			return null;
+		}
+		topic.getComments().add(commentId);
+		Serializer.save("topics.ser", topics);
+		return topic;
+	}
+
 }
