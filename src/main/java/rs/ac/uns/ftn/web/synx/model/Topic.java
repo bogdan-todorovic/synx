@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.web.synx.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import rs.ac.uns.ftn.web.synx.util.TopicType;
 
@@ -16,6 +17,7 @@ public class Topic implements Serializable {
 	private Date creationDate;
 	private int numberOfLikes;
 	private int numberOfDislikes;
+	private List<String> comments;
 	
 	public Topic() {}
 
@@ -94,6 +96,14 @@ public class Topic implements Serializable {
 
 	public void setNumberOfDislikes(int numberOfDislikes) {
 		this.numberOfDislikes = numberOfDislikes;
+	}
+
+	public List<String> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<String> comments) {
+		this.comments = comments;
 	}
 	
 	
