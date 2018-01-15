@@ -35,12 +35,21 @@ public class CommentServiceImpl implements CommentService {
 	public Comment create(Comment entity) {
 		String commentId = UUID.randomUUID().toString();
 		entity.setId(commentId);
-		Topic updatedTopic = topicService.addComment(entity.getTopic(), commentId);
-		if (updatedTopic == null) {
-			return null;
-		}
 		entity.setCreationDate(new Date());
 		
+		// check if it is a root comment
+		if (entity.getParentComment() == null) {
+			// update topic's list of comments
+			Topic updatedTopic = topicService.addComment(entity.getTopic(), commentId);
+			if (updatedTopic == null) {
+				return null;
+			}
+		}
+		else {
+			// if it is not a root comment, add it to the parent's subcomments list
+			Comment parentComment = findOne(entity.getParentComment());
+			parentComment.getSubcomments().add(entity);
+		}
 		comments.put(commentId, entity);
 		Serializer.save("comments.ser", comments);
 		return entity;
