@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-4">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" ng-model="searchText" ng-change="search(searchText)" placeholder="Search">
                 <span class="input-group-btn">
                     <button class="btn" type="button">
                         <i class="glyphicon glyphicon-search"></i>
@@ -84,7 +84,7 @@
 </div>
 <!-- Container which contains list of all subforums -->
 <div class="container subforums-container">
-    <div class="row" ng-repeat="subforum in subforums">
+    <div class="row" ng-repeat="subforum in filteredSubforums">
         <!-- subscribe/unsubscribe -->
         <div class="col-xs-12 col-sm-2 col-lg-1 button-wrapper">
             <button class="btn btn-success btn-sm">

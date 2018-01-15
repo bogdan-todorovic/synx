@@ -1,11 +1,12 @@
 (function() {
     angular.module("synxApp")
-        .controller("subforumsController", ["$scope", "$rootScope", "fileReaderService", "subforumService", "userService", function($scope, $rootScope, fileReaderService, subforumService, userService) {
+        .controller("subforumsController", ["$scope", "$rootScope", "fileReaderService", "subforumService", "userService", "$filter", function($scope, $rootScope, fileReaderService, subforumService, userService, $filter) {
 
                 // Load all subforums
                 subforumService.getAllSubforums()
                     .then(function(response) {
                             $scope.subforums = response.data;
+                            $scope.filteredSubforums = response.data;
                         },
                         function(error) {
                             console.log("Unable to load subforums");
@@ -72,6 +73,10 @@
                             $scope.alertMessage = "Subforum with that title already exists";
                             console.log(error.data);
                         });
+                }
+
+                $scope.search = function(searchText) {
+                    $scope.filteredSubforums = $filter("filter")($scope.subforums, searchText);
                 }
             }
         ]);
