@@ -21,7 +21,7 @@
                             console.log(error);
                         }
                     );
-
+                
                 // instance for new subforum
                 $scope.newSf = {};
 
@@ -60,11 +60,11 @@
                     else { 
                         $scope.newSf.moderators.push(moderator);
                     }
-
-                    console.log($scope);
                 }
 
                 $scope.create = function() {
+                    // setting lead moderator
+                    $scope.newSf.leadModerator = $rootScope.user.username;
                     subforumService.createSubforum($scope.newSf)
                         .then(function(response) {
                             $scope.subforums.push(response.data);

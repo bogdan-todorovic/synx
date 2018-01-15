@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.web.synx.resources;
 import java.util.List;
 
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -43,33 +44,19 @@ public class SubforumResource {
 		return Response.status(Response.Status.OK).entity(foundedSubforum).build();
 	}
 
-	@PermitAll
+	@RolesAllowed({"MODERATOR", "ADMIN"})
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createSubforum(Subforum subforum) {
+		if(subforum.getTitle() == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
 		Subforum createdSubforum = subforumService.create(subforum);
-
 		if (createdSubforum == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		return Response.status(Response.Status.CREATED).entity(createdSubforum).build();
-	}
-
-	@PermitAll
-	@PUT
-	@Path("/{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateSubforum(@PathParam("id") String id, Subforum newSubforum) {
-		Subforum foundedSubforum = subforumService.findOne(id);
-		if (foundedSubforum == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-
-		Subforum updatedSubforum = subforumService.update(id, newSubforum);
-		return Response.status(Response.Status.OK).entity(updatedSubforum).build();
-
 	}
 
 	@PermitAll
