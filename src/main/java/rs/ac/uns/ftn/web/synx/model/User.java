@@ -1,7 +1,9 @@
 package rs.ac.uns.ftn.web.synx.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import rs.ac.uns.ftn.web.synx.util.UserRole;
 
@@ -18,9 +20,13 @@ public class User implements Serializable {
 	private String email;
 	private Date registrationDate;
 
-	// Spisak praćenih podforuma
-	// Spisak snimljenih tema
-	// Spisak snimljenih komentara
+	private List<String> followedSubforums = new ArrayList<>();
+	private List<String> savedTopics = new ArrayList<>();
+	private List<String> savedComments = new ArrayList<>();
+	private List<String> likedTopics = new ArrayList<>();
+	private List<String> dislikedTopics = new ArrayList<>();
+	private List<String> likedComments = new ArrayList<>();
+	private List<String> dislikedComments = new ArrayList<>();
 	
 	public User() {}
 	
@@ -99,6 +105,62 @@ public class User implements Serializable {
 
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
+	}
+
+	public List<String> getFollowedSubforums() {
+		return followedSubforums;
+	}
+
+	public void setFollowedSubforums(List<String> followedSubforums) {
+		this.followedSubforums = followedSubforums;
+	}
+
+	public List<String> getSavedTopics() {
+		return savedTopics;
+	}
+
+	public void setSavedTopics(List<String> savedTopics) {
+		this.savedTopics = savedTopics;
+	}
+
+	public List<String> getSavedComments() {
+		return savedComments;
+	}
+
+	public void setSavedComments(List<String> savedComments) {
+		this.savedComments = savedComments;
+	}
+
+	public List<String> getLikedTopics() {
+		return likedTopics;
+	}
+
+	public void setLikedTopics(List<String> likedTopics) {
+		this.likedTopics = likedTopics;
+	}
+
+	public List<String> getDislikedTopics() {
+		return dislikedTopics;
+	}
+
+	public void setDislikedTopics(List<String> dislikedTopics) {
+		this.dislikedTopics = dislikedTopics;
+	}
+
+	public List<String> getLikedComments() {
+		return likedComments;
+	}
+
+	public void setLikedComments(List<String> likedComments) {
+		this.likedComments = likedComments;
+	}
+
+	public List<String> getDislikedComments() {
+		return dislikedComments;
+	}
+
+	public void setDislikedComments(List<String> dislikedComments) {
+		this.dislikedComments = dislikedComments;
 	}
 	
 }
