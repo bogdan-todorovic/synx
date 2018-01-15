@@ -10,6 +10,9 @@
                     resolve: {
                         topicPromise: function(topicService, $stateParams) {
                             return topicService.getTopic($stateParams.title);
+                        },
+                        commentsPromise: function(commentService, $stateParams) {
+                            return commentService.getCommentsByTopicId($stateParams.title);
                         }
                     }
                 });
