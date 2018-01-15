@@ -13,16 +13,17 @@ public class Comment implements Serializable {
 	private String author;
 	private Date creationDate;
 	private String parentComment;
-	private List<String> subcomments = new ArrayList<>();
+	private List<Comment> subcomments = new ArrayList<>();
 	private String content;
 	private int numberOfLikes;
 	private int numberOfDislikes;
 	private boolean isEdited;
+	private boolean isDeleted;
 	
 	public Comment() {}
 	
 	public Comment(String id, String topic, String author, Date creationDate, String parentComment,
-			List<String> subcomments, String content, int numberOfLikes, int numberOfDislikes, boolean isEdited) {
+			List<Comment> subcomments, String content, int numberOfLikes, int numberOfDislikes, boolean isEdited, boolean isDeleted) {
 		super();
 		this.id = id;
 		this.topic = topic;
@@ -34,6 +35,7 @@ public class Comment implements Serializable {
 		this.numberOfLikes = numberOfLikes;
 		this.numberOfDislikes = numberOfDislikes;
 		this.isEdited = isEdited;
+		this.isDeleted = isDeleted;
 	}
 
 	public String getId() {
@@ -76,11 +78,11 @@ public class Comment implements Serializable {
 		this.parentComment = parentComment;
 	}
 
-	public List<String> getSubcomments() {
+	public List<Comment> getSubcomments() {
 		return subcomments;
 	}
 
-	public void setSubcomments(List<String> subcomments) {
+	public void setSubcomments(List<Comment> subcomments) {
 		this.subcomments = subcomments;
 	}
 
@@ -114,5 +116,13 @@ public class Comment implements Serializable {
 
 	public void setEdited(boolean isEdited) {
 		this.isEdited = isEdited;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 }
