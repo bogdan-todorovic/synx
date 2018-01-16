@@ -401,3 +401,54 @@
     border: 1px solid #ccc;
 }
 /* #endregion */
+
+.topic-container tree {
+    margin-left: 20px;
+    display: block;
+}
+
+/* #region comment template */
+.comment-container {
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.comment-container .score-container, .comment-container .content-container {
+    display: inline-block;
+}
+
+.comment-container .score-container .glyphicon {
+    font-size: 18px;
+}
+
+.comment-container .score-container h5 {
+    margin: 3px 0;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.comment-container .content-container {
+    margin-left: 10px;
+}
+
+.comment-container .content-container a {
+    font-size: 12px;
+}
+
+.comment-container .content-container p {
+    margin-bottom: 5px;   
+}
+
+.comment-container ul {
+    list-style: none;
+}
+
+.comment-container .reply textarea {
+    padding: 5px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* #endregion */
