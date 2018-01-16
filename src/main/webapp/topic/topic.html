@@ -25,4 +25,12 @@
             </div>
         </div>
     </header>
+
+    <main>
+        <!-- tree directive -->
+        <div ng-repeat="comment in comments">
+            <tree root="comment" test="testFunction(s)"></tree>
+        </div>
+       
+    </main>
 </div>
