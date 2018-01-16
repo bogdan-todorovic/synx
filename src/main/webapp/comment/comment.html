@@ -1,0 +1,29 @@
+<div class="comment-container">
+    <div class="score-container">
+        <a href="" class="likes">
+            <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+        </a>
+        <h5>1</h5>
+        <a href="" class="likes">
+            <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+        </a>
+    </div>
+    <div class="content-container">
+        <a href="#" ng-click="test({ s : root })">author {{root.author}}</a>
+        <p>comment content'd</p>
+        <a href="">save</a>
+        <a href="" ng-click="toggleShow()">reply</a>
+        <a href="">report</a>
+
+        <div class="reply" ng-show="show">
+            <textarea cols="50" rows="3"></textarea>
+            <button class="btn btn-default btn-sm">Save</button>
+            <button class="btn btn-default btn-sm" ng-click="toggleShow()">Cancel</button>
+        </div>
+    </div>
+    <ul>
+        <li ng-repeat="subcomment in root.subcomments">
+            <tree root="subcomment" test="testFunction(s)"></tree>
+        </li>
+    </ul>
+</div>
