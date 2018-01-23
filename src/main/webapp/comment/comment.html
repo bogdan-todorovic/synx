@@ -9,7 +9,7 @@
         </a>
     </div>
     <div class="content-container">
-        <a href="#" ng-click="test({ s : root })">author {{root.author}}</a>
+        <a href="">author {{root.author}}</a>
         <span class="date">submited on {{ root.creationDate | date : 'dd/MM/yyyy' }}</span>
         <p>{{root.content}}</p>
         <a href="">save</a>
@@ -17,14 +17,14 @@
         <a href="">report</a>
 
         <div class="reply" ng-show="show">
-            <textarea cols="50" rows="3"></textarea>
-            <button class="btn btn-default btn-sm">Save</button>
+            <textarea cols="50" rows="3" ng-model="newSubcomment.content"></textarea>
+            <button class="btn btn-default btn-sm" ng-click="createSubcomment()">Save</button>
             <button class="btn btn-default btn-sm" ng-click="toggleShow()">Cancel</button>
         </div>
     </div>
     <ul>
         <li ng-repeat="subcomment in root.subcomments">
-            <tree root="subcomment" test="testFunction(s)"></tree>
+            <tree root="subcomment"></tree>
         </li>
     </ul>
 </div>
