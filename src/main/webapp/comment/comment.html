@@ -10,7 +10,8 @@
     </div>
     <div class="content-container">
         <a href="#" ng-click="test({ s : root })">author {{root.author}}</a>
-        <p>comment content'd</p>
+        <span class="date">submited on {{ root.creationDate | date : 'dd/MM/yyyy' }}</span>
+        <p>{{root.content}}</p>
         <a href="">save</a>
         <a href="" ng-click="toggleShow()">reply</a>
         <a href="">report</a>

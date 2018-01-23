@@ -436,7 +436,13 @@
     font-size: 12px;
 }
 
+.comment-container .content-container .date {
+    display: block;
+    font-size: 10px;
+}
+
 .comment-container .content-container p {
+    margin-top: 5px;
     margin-bottom: 5px;   
 }
 
