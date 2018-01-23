@@ -7,5 +7,9 @@
             self.getCommentsByTopicId = function(id) {
                 return $http.get(self.baseUrl + "/" + id);
             }
+
+            self.createComment = function(data) {
+                return $http.post(self.baseUrl, data);
+            }
         }]);
 })();
