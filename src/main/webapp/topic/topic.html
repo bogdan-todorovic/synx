@@ -27,9 +27,13 @@
     </header>
 
     <main>
+        <div class="root-comment">
+            <textarea cols="50" rows="4" ng-model="newRootComment.content" placeholder="Tell us what do you think"></textarea>
+            <button class="btn btn-default btn-sm" ng-click="createRootComment()">Save</button>
+        </div>
         <!-- tree directive -->
         <div ng-repeat="comment in comments">
-            <tree root="comment" test="testFunction(s)"></tree>
+            <tree root="comment"></tree>
         </div>
        
     </main>
