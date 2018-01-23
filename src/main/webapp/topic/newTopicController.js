@@ -1,10 +1,11 @@
 (function() {
     angular.module("synxApp")
         .controller("newTopicController", ["$scope", "previousState", "$state", "fileReaderService", "topicService", function($scope, previousState, $state, fileReaderService, topicService) {
-
+            
+            previousState.params.title = $scope.topic.subforum;
             // on form close redirect to subforum page
             $scope.closeForm = function() {
-                $state.go(previousState.name, previousState.params)
+                $state.go(previousState.name, previousState.params);
             }
 
             $scope.topic = {};

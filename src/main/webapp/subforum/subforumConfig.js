@@ -46,7 +46,8 @@
                         }
                     },
                     resolve: {
-                        previousState: ["$state", function($state) {
+                        previousState: ["$state", "$stateParams", function($state, $stateParams) {
+                            console.log($state.current);
                             var currentStateData = {
                                 name: $state.current.name,
                                 params: $state.params,
