@@ -402,6 +402,18 @@
 }
 /* #endregion */
 
+.topic-container .root-comment {
+    margin: 20px;
+}
+
+.topic-container .root-comment textarea {
+    padding: 5px;
+}
+
+.topic-container .root-comment button {
+    display: block;
+}
+
 .topic-container tree {
     margin-left: 20px;
     display: block;
@@ -413,6 +425,8 @@
     margin-top: 10px;
     padding: 5px;
 }
+
+
 
 .comment-container .score-container, .comment-container .content-container {
     display: inline-block;
