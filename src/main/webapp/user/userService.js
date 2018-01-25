@@ -34,5 +34,8 @@
                 return $http(req);
             };
             
+            self.updateUser = function(id, data) {
+                return $http.put(self.urlBase + "/" + id, data);
+            };
         }]);
 })();

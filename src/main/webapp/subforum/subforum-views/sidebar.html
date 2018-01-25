@@ -1,4 +1,12 @@
 <div id="sidebar" class="wrapper">
+    <div ng-if="$root.user != null">
+        <button class="btn btn-success btn-block" ng-hide="isSubscribed" ng-click="subscribe()">
+            Subscribe
+        </button>
+        <button class="btn btn-danger btn-block" ng-show="isSubscribed" ng-click="unsubscribe()">
+            Unsubscribe
+        </button>
+    </div>
     <button class="btn btn-primary btn-block" ui-sref="subforum.newtopic">
         Submit a new topic
     </button>
