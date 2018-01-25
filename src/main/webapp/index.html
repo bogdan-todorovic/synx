@@ -30,8 +30,10 @@
     <script src="app.js"></script>
     <!-- COMMON DIRECTIVES -->
     <script src="common/directives/fileModel.js"></script>
+    <script src="common/directives/tree.js"></script>
     <!-- COMMON SERVICES -->
     <script src="common/services/fileReaderService.js"></script>
+    <script src="common/services/recursionHelperService.js"></script>
     <!-- USER -->
     <script src="user/userConfig.js"></script>
     <script src="user/loginController.js"></script>
@@ -44,8 +46,13 @@
     <script src="subforum/subforumService.js"></script>
     <script src="subforum/subforumsController.js"></script>
     <script src="subforum/subforumController.js"></script>
-
-    
+    <!-- TOPIC -->
+    <script src="topic/topicConfig.js"></script>
+    <script src="topic/topicService.js"></script>
+    <script src="topic/newTopicController.js"></script>
+    <script src="topic/topicController.js"></script>
+    <!-- COMMENT -->
+    <script src="comment/commentService.js"></script>
 </head>
 
 <body>
@@ -69,6 +76,19 @@
             <div class="collapse navbar-collapse" id="navDropdown">
                 <!-- Page navigation -->
                 <ul class="nav navbar-nav">
+                    <!-- Followed subforums for currently active user -->
+                    <li class="dropdown" ng-if="$root.user != null">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            My subforums <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="subforum in $root.user.followedSubforums">
+                                <a ui-sref="subforum.detail({ title: subforum})" ui-sref-opts="{reload: true}">
+                                    {{subforum}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- Subforum page for all users -->
                     <li>
                         <a ui-sref="subforums" ui-sref-active="active">Subforums</a>
