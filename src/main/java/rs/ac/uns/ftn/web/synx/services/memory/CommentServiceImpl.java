@@ -44,6 +44,7 @@ public class CommentServiceImpl implements CommentService {
 			if (updatedTopic == null) {
 				return null;
 			}
+			
 		}
 		else {
 			// if it is not a root comment, add it to the parent's subcomments list
@@ -66,7 +67,7 @@ public class CommentServiceImpl implements CommentService {
 		List<Comment> allComments = findAll();
 		List<Comment> commentsOfTheTopic = new ArrayList<>();
 		for (Comment comment : allComments) {
-			if (comment.getTopic().equals(topicId)) {
+			if (comment.getTopic().equals(topicId) && comment.getParentComment() == null) {
 				commentsOfTheTopic.add(comment);
 			}
 		}
