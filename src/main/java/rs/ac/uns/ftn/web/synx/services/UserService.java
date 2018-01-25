@@ -12,5 +12,5 @@ public interface UserService extends CrudService<User, String> {
 	boolean changeRole(User user, String newRole);
 	
 	List<User> findAllModerators();
-
+	User update(User updatedUser, String username);
 }

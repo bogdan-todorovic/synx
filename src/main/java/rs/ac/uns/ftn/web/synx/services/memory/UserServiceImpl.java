@@ -81,4 +81,16 @@ public class UserServiceImpl implements UserService {
 		return moderators;
 	}
 
+	@Override
+	public User update(User updatedUser, String username) {
+		if (users.containsKey(username)) {
+			users.remove(username);
+			users.put(username, updatedUser);
+			Serializer.save("users.ser", users);
+			return updatedUser;
+			
+		}
+		return null;
+	}
+
 }

@@ -80,7 +80,6 @@ public class UserResource {
 		return Response.status(Response.Status.OK).header("x-auth-token", token).entity(authenticatedUser).build();
 	}
 	
-	//@PermitAll
 	@RolesAllowed("ADMIN")
 	@PUT
 	@Path("/newrole/{username}")
@@ -99,6 +98,18 @@ public class UserResource {
 		}
 		return Response.status(Response.Status.BAD_REQUEST).build();
 			
+	}
+	
+	@PermitAll
+	@PUT
+	@Path("/{username}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateUser(User user, @PathParam("username") String username) {
+		User updatedUser = userService.update(user, username);
+		if (updatedUser == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok().entity(updatedUser).build();
 	}
 
 	
