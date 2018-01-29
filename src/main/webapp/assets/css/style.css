@@ -220,6 +220,7 @@
 /* on hover change the color of glyphicon */
 .subforum-container #subforum-main-content a.likes:hover > span {
     color: #777;
+    cursor: pointer;
 } 
 
 .subforum-container #subforum-main-content .glyphicon {
@@ -473,7 +474,20 @@
 
 /* #endregion */
 
-.home {
-    background: #f8f8f8;
-    border: none;
+/* #region User profile page */
+.profile aside > div {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
 }
+
+.profile aside h4 {
+    margin-bottom: 5px;
+}
+
+.profile aside h6 {
+    margin-top: 5px;
+}
+
+/* #endregion */

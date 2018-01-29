@@ -19,6 +19,29 @@
                     url: "/users",
                     templateUrl: "user/users.html",
                     controller: "usersController"
+                })
+
+                .state("user", {
+                    url: "/user",
+                    templateUrl: "user/profile.html"
+                })
+                
+                .state("user.saved", {
+                    url: "/saved",
+                    views: {
+                        "saved": {
+                            templateUrl: "user/profile-views/saved.html"
+                        }
+                    }
+                })
+                
+                .state("user.upvoted", {
+                    url: "/upvoted",
+                    views: {
+                        "upvoted": {
+                            templateUrl: "user/profile-views/upvoted.html"
+                        }
+                    }
                 });
         }
         ]);

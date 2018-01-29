@@ -1,0 +1,41 @@
+<div class="container profile">
+    <div class="row">
+        <div class="col-xs-9">
+            <ul class="nav nav-tabs">
+                <li role="presentation">
+                    <a ui-sref="user.saved" ui-sref-active="active">Saved</a>
+                </li>
+                <li role="presentation">
+                    <a ui-sref="user.upvoted" ui-sref-active="active">Upvoted</a>
+                </li>
+                <li role="presentation"><a href="">Downvoted</a></li>
+                <li role="presentation"><a href="">Messages</a></li>
+            </ul>
+            <div ui-view="saved"></div>
+            <div ui-view="upvoted"></div>	
+        </div>
+        <div class="col-xs-3">
+            <aside>
+                <div>
+                    <h4>USER NAME</h4>
+                    <h6><a>username</a></h6>
+                    <p>
+                        <i class="glyphicon glyphicon-envelope"></i> email@example.com
+                        <br />
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <a>email</a>
+                        <br />
+                        <i class="glyphicon glyphicon-gift"></i> June 02, 1988
+                        <br />
+                        <i class="glyphicon glyphicon-earphone"></i> 12312312
+                    </p>
+                    <button class="btn btn-primary btn-block btn-sm">Send a private message</button>
+                </div>
+                <div>
+                    active in these communities
+                </div>
+            </aside>
+                    
+        </div>
+    </div>
+</div>
