@@ -34,6 +34,8 @@
     <!-- COMMON SERVICES -->
     <script src="common/services/fileReaderService.js"></script>
     <script src="common/services/recursionHelperService.js"></script>
+    <!-- HOME -->
+    <script src="home/homeController.js"></script>
     <!-- USER -->
     <script src="user/userConfig.js"></script>
     <script src="user/loginController.js"></script>
@@ -61,7 +63,7 @@
         <div class="container">
             <!-- Logo and name -->
             <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="home">
+                <a class="navbar-brand" ui-sref="home" ui-sref-opts="{reload: true}">
                     <img src="assets/images/synx-logo-new.png" />
                 </a>
                 <!-- Open/close menu button for mobile devices  -->

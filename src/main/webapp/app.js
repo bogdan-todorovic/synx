@@ -3,14 +3,23 @@
 
     app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider",
         function($urlRouterProvider, $stateProvider, $httpProvider) {
-
+        
         $urlRouterProvider.otherwise("/home");
 
         $stateProvider
 
             .state("home", {
                 url: "/home",
-                templateUrl: "home/home.html"
+                templateUrl: "home/home.html",
+                controller: "homeController",
+                resolve: {
+                    topics: function(topicService) {
+                        return topicService.getAllTopics()
+                            .then(function(response) {
+                                return response.data;
+                            });
+                    }    
+                }
             });
 
         $httpProvider.interceptors.push(["$q", "$injector", "$rootScope", function($q, $injector, $rootScope) {

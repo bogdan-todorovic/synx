@@ -1,4 +1,31 @@
-<div>
-    <h1>The Homey Page</h1>
-    <p>This page demonstrates<span class="text-danger">nested</span> views.</p>    
+<div class="container subforum-container home">
+    <div id="subforum-main-content" ng-repeat="topic in filteredTopics">
+        <div>
+            {{$index + 1}}
+        </div>
+        <div>
+            <a class="likes">
+                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+            </a>
+            <h5>1</h5>
+            <a class="likes">
+                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+            </a>
+        </div>
+        <div class="icon">
+            <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType === 'LINK'">
+            <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType === 'TEXT'">
+            <img ng-src={{topic.content}} alt="oops" ng-if="topic.topicType === 'IMAGE'">
+        </div>
+        <div>
+            <a class="title" ui-sref="topic({title: topic.title})">{{topic.title}}</a>
+            <p>
+                submitted on {{topic.creationDate | date : 'dd/MM/yyyy'}}
+                <span>by {{topic.author}}</span>
+                <span>
+                    to <a ui-sref="subforum.detail({title: topic.subforum})">{{topic.subforum}}</a>
+                </span>
+            </p>
+        </div>
+    </div>
 </div>
