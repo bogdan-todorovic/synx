@@ -1,1 +1,13 @@
-SAVED
+<div class="saved-topics" ng-repeat="topic in savedTopics">
+    <div class="icon">
+        <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType === 'LINK'">
+        <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType === 'TEXT'">
+        <img ng-src={{topic.content}} alt="oops" ng-if="topic.topicType === 'IMAGE'">
+    </div>
+    <div>
+        <a href="" class="title" ui-sref="topic({title: topic.title})">{{topic.title}}</a>
+        <p>submitted by <a ui-sref="user({username: topic.author})">{{topic.author}}</a>
+            to <a ui-sref="subforum.detail({title: topic.subforum})">{{topic.subforum}}</a>
+        </p>
+    </div>
+</div>

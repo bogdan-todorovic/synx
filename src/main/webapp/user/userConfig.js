@@ -31,6 +31,12 @@
                                 .then(function(response) {
                                     return response.data;
                                 });
+                        },
+                        savedTopics: function($stateParams, userService) {
+                            return userService.getSavedTopics($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
                         }
                     }
                 })

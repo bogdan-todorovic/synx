@@ -250,11 +250,11 @@
     border: 1px solid #ccc;
 }
 /* style for the topic title */
-.subforum-container #subforum-main-content a.title {
+.subforum-container #subforum-main-content a.title, .saved-topics a.title {
     font-size: 18px;
     text-decoration: none;
 }
-.subforum-container #subforum-main-content p {
+.subforum-container #subforum-main-content p, .saved-topics p {
     font-size: 12px;
 }
 
@@ -383,6 +383,7 @@
 }
 .topic-container .title > p {
     font-size: 12px;
+    margin-bottom: 0;
 }
 .topic-container .content {
     padding: 5px;
@@ -502,3 +503,14 @@
     text-overflow: ellipsis;
 }
 /* #endregion */
+
+.saved-topics > div {
+    display: inline-block;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.saved-topics .icon > img {
+    height: 64px;
+    width: 64px;
+}

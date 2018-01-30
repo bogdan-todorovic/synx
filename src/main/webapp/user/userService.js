@@ -25,6 +25,10 @@
                 return $http.get(self.urlBase + "/moderators");
             };
 
+            self.getSavedTopics = function(username) {
+                return $http.get(self.urlBase + "/savedtopics/" + username);
+            };
+
             self.updateRoles = function(id, newRole) {
                 var req = {
                     method: 'PUT',
