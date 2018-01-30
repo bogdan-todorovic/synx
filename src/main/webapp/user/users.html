@@ -6,9 +6,9 @@
             
             <ul class="list-group user-list">
                 <li class="list-group-item" ng-repeat="user in users" ng-if="user.role!='ADMIN'">
-                    {{user.username}}({{user.role}})
+                    <a ui-sref="user({username: user.username})">{{user.username}}</a>
 
-                    <div class="right-side">
+                    <div class="right-side" ng-if="$root.user.role === 'ADMIN'">
                         <!-- New role selector -->
                         <select id="role-selector" ng-model="user.newRole">
                             <option value="">
@@ -30,7 +30,7 @@
                     </div>
                 </li>
             </ul>
-            <div class="btn-container">
+            <div class="btn-container" ng-if="$root.user.role === 'ADMIN'">
                 <button class="btn btn-primary btn-save" ng-click="updateRoles()">Update</button>
             </div>
         </div>
