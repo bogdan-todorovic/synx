@@ -17,6 +17,10 @@
                 return $http.get(self.urlBase);
             };
 
+            self.getUserById = function(id) {
+                return $http.get(self.urlBase + "/" + id);
+            };
+
             self.getAllModerators = function() {
                 return $http.get(self.urlBase + "/moderators");
             };
