@@ -93,4 +93,15 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public void removeFollowedSubforum(String subforumId) {
+		for (User user : users.values()) {
+			if (user.getFollowedSubforums().contains(subforumId)) {
+				user.getFollowedSubforums().remove(subforumId);
+			}
+		}
+		Serializer.save("users.ser", users);
+		
+	}
+
 }

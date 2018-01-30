@@ -7,11 +7,13 @@ import java.util.Map;
 import rs.ac.uns.ftn.web.synx.database.MyDatabase;
 import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.services.SubforumService;
+import rs.ac.uns.ftn.web.synx.services.TopicService;
+import rs.ac.uns.ftn.web.synx.services.UserService;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class SubforumServiceImpl implements SubforumService {
 
-	private Map<String, Subforum> subforums = MyDatabase.getSubforums();
+	private Map<String, Subforum> subforums = MyDatabase.getSubforums(); 
 	
 	@Override
 	public List<Subforum> findAll() {
@@ -40,6 +42,13 @@ public class SubforumServiceImpl implements SubforumService {
 	@Override
 	public void remove(String id) {
 		if (subforums.containsKey(id)) {
+			Subforum subforum = subforums.get(id);
+			TopicService topicService = new TopicServiceImpl();
+			for (String topicId : subforum.getTopics()) {
+				topicService.remove(topicId);
+			}
+			UserService userService = new UserServiceImpl();
+			userService.removeFollowedSubforum(id);
 			subforums.remove(id);
 			Serializer.save("subforums.ser", subforums);
 		}

@@ -15,7 +15,6 @@ import rs.ac.uns.ftn.web.synx.util.Serializer;
 public class TopicServiceImpl implements TopicService {
 	
 	private Map<String, Topic> topics = MyDatabase.getTopics();
-	private SubforumService subforumService = new SubforumServiceImpl();
 	
 	@Override
 	public Topic findOne(String id) {
@@ -37,6 +36,7 @@ public class TopicServiceImpl implements TopicService {
 		}
 		// find the subforum and add topic
 		// return updated subforum
+		SubforumService subforumService = new SubforumServiceImpl();
 		Subforum updatedSubforum = subforumService.addTopic(entity.getSubforum(), entity.getTitle());
 		if (updatedSubforum == null) {
 			return null;
@@ -49,7 +49,10 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public void remove(String id) {
-		// TODO Auto-generated method stub
+		if (topics.containsKey(id)) {
+			topics.remove(id);
+			Serializer.save("topics.ser", topics);
+		}
 
 	}
 
