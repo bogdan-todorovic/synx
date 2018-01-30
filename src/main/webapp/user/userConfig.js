@@ -22,8 +22,17 @@
                 })
 
                 .state("user", {
-                    url: "/user",
-                    templateUrl: "user/profile.html"
+                    url: "/user/{username}",
+                    templateUrl: "user/profile.html",
+                    controller: "profileController",
+                    resolve: {
+                        user: function($stateParams, userService) {
+                            return userService.getUserById($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
+                        }
+                    }
                 })
                 
                 .state("user.saved", {
