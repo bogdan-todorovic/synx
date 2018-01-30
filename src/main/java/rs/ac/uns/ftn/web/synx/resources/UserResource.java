@@ -36,6 +36,18 @@ public class UserResource {
 	
 	@PermitAll
 	@GET
+	@Path("/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUserById(@PathParam("username") String username) {
+		User foundedUser = userService.findOne(username);
+		if (foundedUser == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(foundedUser).build();
+	}
+	
+	@PermitAll
+	@GET
 	@Path("/moderators")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllModerators() {
