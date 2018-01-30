@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import rs.ac.uns.ftn.web.synx.database.MyDatabase;
+import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
+import rs.ac.uns.ftn.web.synx.services.TopicService;
 import rs.ac.uns.ftn.web.synx.services.UserService;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 import rs.ac.uns.ftn.web.synx.util.UserRole;
@@ -102,6 +104,23 @@ public class UserServiceImpl implements UserService {
 		}
 		Serializer.save("users.ser", users);
 		
+	}
+
+	@Override
+	public List<Topic> getSavedTopics(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<Topic> savedTopics = new ArrayList<>();
+			TopicService topicService = new TopicServiceImpl();
+			for (String topicId : user.getSavedTopics()) {
+				Topic foundedTopic = topicService.findOne(topicId);
+				if (foundedTopic != null) {
+					savedTopics.add(foundedTopic);
+				}
+			}
+			return savedTopics;
+		}
+		return null;
 	}
 
 }

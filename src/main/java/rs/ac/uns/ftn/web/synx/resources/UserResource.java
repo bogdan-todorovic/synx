@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
 import rs.ac.uns.ftn.web.synx.services.UserService;
 import rs.ac.uns.ftn.web.synx.services.memory.UserServiceImpl;
@@ -29,7 +30,6 @@ public class UserResource {
 	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllUsers() {
-		
 		List<User> users = userService.findAll();
 		return Response.status(Response.Status.OK).entity(users).build();
 	}
@@ -44,6 +44,18 @@ public class UserResource {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		return Response.ok(foundedUser).build();
+	}
+	
+	@PermitAll
+	@GET
+	@Path("/savedtopics/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getSavedTopics(@PathParam("username") String username) {
+		List<Topic> topics = userService.getSavedTopics(username);
+		if (topics == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(topics).build();
 	}
 	
 	@PermitAll

@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.web.synx.services;
 
 import java.util.List;
 
+import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
 
 public interface UserService extends CrudService<User, String> {
@@ -14,4 +15,5 @@ public interface UserService extends CrudService<User, String> {
 	List<User> findAllModerators();
 	User update(User updatedUser, String username);
 	void removeFollowedSubforum(String subforumId);
+	List<Topic> getSavedTopics(String username);
 }
