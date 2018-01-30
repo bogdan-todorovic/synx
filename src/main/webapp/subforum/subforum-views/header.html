@@ -3,4 +3,6 @@
         <img ng-src="{{subforum.icon}}" alt="No icon" />
     </div>
     <h1>{{subforum.title}}</h1>
+    <button class="btn btn-danger btn-sm btn-delete" ng-confirm-click="Are you sure to delete this subforum ?" confirmed-click="delete()" ng-if="$root.user.role === 'ADMIN' || $root.user.username === subforum.leadModerator">
+        Delete</button>
 </header>

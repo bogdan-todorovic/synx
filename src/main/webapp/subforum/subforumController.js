@@ -1,6 +1,6 @@
 (function() {
     angular.module("synxApp")
-        .controller("subforumController", ["$scope", "$rootScope", "subforumPromise", "topicsPromise", "userService", function($scope, $rootScope, subforumPromise, topicsPromise, userService) {
+        .controller("subforumController", ["$scope", "$rootScope", "$state", "subforumPromise", "topicsPromise", "userService", "subforumService", function($scope, $rootScope, $state,subforumPromise, topicsPromise, userService, subforumService) {
 
             $scope.subforum = subforumPromise.data;
             $scope.topics = topicsPromise.data;
@@ -23,7 +23,7 @@
                 $rootScope.user.followedSubforums.push($scope.subforum.title);
                 $scope.isSubscribed = true;
                 updateUser();
-            }
+            };
 
             $scope.unsubscribe = function() {
                 var index = $rootScope.user.followedSubforums.indexOf($scope.subforum.title);
@@ -32,7 +32,7 @@
                     $scope.isSubscribed = false;
                     updateUser();
                 }
-            }
+            };
 
             function updateUser() {
                 userService.updateUser($rootScope.user.username, $rootScope.user)
@@ -42,5 +42,12 @@
                             $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
                         });
             }
+
+            $scope.delete = function() {
+                subforumService.removeSubforum($scope.subforum.title)
+                    .then(function(response) {
+                        $state.go("home");
+                    });
+            };
         }]);
 })();
