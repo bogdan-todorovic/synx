@@ -85,21 +85,12 @@
 <!-- Container which contains list of all subforums -->
 <div class="container subforums-container">
     <div class="row" ng-repeat="subforum in filteredSubforums">
-        <!-- subscribe/unsubscribe -->
-        <div class="col-xs-12 col-sm-2 col-lg-1 button-wrapper">
-            <button class="btn btn-success btn-sm">
-                Subscribe
-            </button>
-        </div>
-        <!-- title and description container -->
         <div class="col-xs-12 col-sm-10 col-lg-7 title-desc-wrapper">
-            <!-- title -->
             <h4>
                 <a ui-sref="subforum.detail({ title: subforum.title})">
                     {{subforum.title}}
                 </a>
             </h4>
-            <!-- description -->
             <p class="description">
                 {{subforum.description}}
             </p>
