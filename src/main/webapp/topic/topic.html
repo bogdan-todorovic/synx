@@ -12,6 +12,10 @@
         <div class="title">
             <h4>{{topic.title}}</h4>
             <p>submited by {{topic.author}}</p>
+            <div ng-if="$root.user != null">
+                <a href="" ng-hide="isSaved" ng-click="save()">save</a>
+                <a href="" ng-show="isSaved" ng-click="unsave()">unsave</a>
+            </div>
         </div>
         <div class="content">
             <div ng-if="topic.topicType === 'IMAGE'">

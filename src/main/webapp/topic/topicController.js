@@ -1,6 +1,6 @@
 (function() {
     angular.module("synxApp")
-        .controller("topicController", ["$scope", "topicPromise", "commentsPromise", "commentService", function($scope, topicPromise, commentsPromise, commentService) {
+        .controller("topicController", ["$scope", "$rootScope", "topicPromise", "commentsPromise", "commentService", "userService", function($scope, $rootScope, topicPromise, commentsPromise, commentService, userService) {
 
             $scope.topic = topicPromise.data;
             console.log($scope.topic);
@@ -19,5 +19,43 @@
                         console.log(error);
                     });
             };
+
+            $scope.isSaved = false;
+            // checking if user has already saved current subforum
+            (function() {
+                if ($rootScope.user != null) {
+                    var savedTopics = $rootScope.user.savedTopics;
+                    var currentTopic = $scope.topic.title;
+                    for (var i = 0; i < savedTopics.length; i++) {
+                        if (savedTopics[i] === currentTopic) {
+                            $scope.isSaved = true;
+                        }
+                    }
+                }
+            })();
+
+            $scope.save = function() {
+                $rootScope.user.savedTopics.push($scope.topic.title);
+                $scope.isSaved = true;
+                updateUser();
+            }
+
+            $scope.unsave = function() {
+                var index = $rootScope.user.savedTopics.indexOf($scope.topic.title);
+                if (index > -1) {
+                    $rootScope.user.savedTopics.splice(index,1);
+                    $scope.isSaved = false;
+                    updateUser();
+                }
+            }
+
+            function updateUser() {
+                userService.updateUser($rootScope.user.username, $rootScope.user)
+                        .then(function(response) {
+                            var user = JSON.stringify(response.data);
+                            localStorage.setItem("currentUser", user);
+                            $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
+                        });
+            }
         }]);
 })();
