@@ -43,6 +43,7 @@
     <script src="user/registerController.js"></script>
     <script src="user/logoutController.js"></script>
     <script src="user/usersController.js"></script>
+    <script src="user/profileController.js"></script>
     <!-- SUBFORUM -->
     <script src="subforum/subforumConfig.js"></script>
     <script src="subforum/subforumService.js"></script>
@@ -95,8 +96,8 @@
                     <li>
                         <a ui-sref="subforums" ui-sref-active="active">Subforums</a>
                     </li>
-                    <!-- Users page for admins -->
-                    <li ng-if="$root.user.role === 'ADMIN'">
+                    <!-- Users page -->
+                    <li>
                         <a ui-sref="users" ui-sref-active="active">Users</a>
                     </li>
                 </ul>
