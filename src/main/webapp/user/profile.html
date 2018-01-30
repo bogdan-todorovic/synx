@@ -1,38 +1,43 @@
 <div class="container profile">
     <div class="row">
         <div class="col-xs-9">
-            <ul class="nav nav-tabs">
-                <li role="presentation">
-                    <a ui-sref="user.saved" ui-sref-active="active">Saved</a>
-                </li>
-                <li role="presentation">
-                    <a ui-sref="user.upvoted" ui-sref-active="active">Upvoted</a>
-                </li>
-                <li role="presentation"><a href="">Downvoted</a></li>
-                <li role="presentation"><a href="">Messages</a></li>
-            </ul>
-            <div ui-view="saved"></div>
-            <div ui-view="upvoted"></div>	
+            <main>
+                <ul class="nav nav-tabs">
+                    <li role="presentation">
+                        <a ui-sref="user.saved" ui-sref-active="active">Saved</a>
+                    </li>
+                    <li role="presentation">
+                        <a ui-sref="user.upvoted" ui-sref-active="active">Upvoted</a>
+                    </li>
+                    <li role="presentation"><a href="">Downvoted</a></li>
+                    <li role="presentation"><a href="">Messages</a></li>
+                </ul>
+                <div ui-view="saved"></div>
+                <div ui-view="upvoted"></div>
+            </main>	
         </div>
         <div class="col-xs-3">
             <aside>
                 <div>
-                    <h4>USER NAME</h4>
-                    <h6><a>username</a></h6>
+                    <h4>{{user.firstname}} {{user.lastname}}</h4>
+                    <h6><a>{{user.username}}</a></h6>
                     <p>
-                        <i class="glyphicon glyphicon-envelope"></i> email@example.com
+                        <i class="glyphicon glyphicon-envelope"></i> {{user.email}}
                         <br />
-                        <i class="glyphicon glyphicon-globe"></i>
-                        <a>email</a>
+                        <i class="glyphicon glyphicon-gift"></i>
+                        {{user.registrationDate | date : 'dd/MM/yyyy'}}
                         <br />
-                        <i class="glyphicon glyphicon-gift"></i> June 02, 1988
-                        <br />
-                        <i class="glyphicon glyphicon-earphone"></i> 12312312
+                        <i class="glyphicon glyphicon-earphone"></i> {{user.phone}}
                     </p>
                     <button class="btn btn-primary btn-block btn-sm">Send a private message</button>
                 </div>
-                <div>
-                    active in these communities
+                <div class="followed-subforums">
+                    <h5>Active in these communities</h5>
+                    <ul>
+                        <li ng-repeat="subforum in user.followedSubforums">
+                            <a ui-sref="subforum.detail({title: subforum})">{{subforum}}</a>
+                        </li>
+                    </ul>
                 </div>
             </aside>
                     

@@ -475,7 +475,7 @@
 /* #endregion */
 
 /* #region User profile page */
-.profile aside > div {
+.profile aside > div, .profile main {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
@@ -490,4 +490,15 @@
     margin-top: 5px;
 }
 
+.profile .followed-subforums > h5{
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.profile .followed-subforums li {
+    list-style-position: inside;
+    list-style-type: circle;
+    text-overflow: ellipsis;
+}
 /* #endregion */
