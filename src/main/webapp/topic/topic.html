@@ -15,6 +15,7 @@
             <div ng-if="$root.user != null">
                 <a href="" ng-hide="isSaved" ng-click="save()">save</a>
                 <a href="" ng-show="isSaved" ng-click="unsave()">unsave</a>
+                <a href="" ng-confirm-click="Are you sure to delete this topic ?" confirmed-click="delete()" ng-if="$root.user.role == 'ADMIN' || $root.user.username == subforum.leadModerator || $root.user.username == topic.author">delete</a>
             </div>
         </div>
         <div class="content">

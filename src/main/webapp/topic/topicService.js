@@ -20,5 +20,9 @@
             self.getTopic = function(id) {
                 return $http.get(self.baseUrl + "/" + id)
             };
+
+            self.deleteTopic = function(id) {
+                return $http.delete(self.baseUrl + "/" + id);
+            };
         }]);
 })();

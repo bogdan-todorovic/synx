@@ -1,12 +1,16 @@
 (function() {
     angular.module("synxApp")
-        .controller("topicController", ["$scope", "$rootScope", "topicPromise", "commentsPromise", "commentService", "userService", function($scope, $rootScope, topicPromise, commentsPromise, commentService, userService) {
+        .controller("topicController", ["$scope", "$rootScope", "$state", "topicPromise", "commentsPromise", "commentService", "userService", "topicService", "subforumService", function($scope, $rootScope, $state, topicPromise, commentsPromise, commentService, userService, topicService, subforumService) {
 
             $scope.topic = topicPromise.data;
-            console.log($scope.topic);
-
             $scope.comments = commentsPromise.data;
-            console.log($scope.comments);
+
+            (function() {
+                subforumService.getSubforum($scope.topic.subforum)
+                    .then(function(response) {
+                        $scope.subforum = response.data;
+                    });
+            })();
 
             $scope.newRootComment = {};
             $scope.newRootComment.topic = $scope.topic.title;
@@ -57,5 +61,14 @@
                             $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
                         });
             }
+
+            $scope.delete = function() {
+                console.log("deleted");
+                topicService.deleteTopic($scope.topic.title)
+                    .then(function(response) {
+                        var subforum = $scope.topic.subforum;
+                        $state.go("subforum.detail", {title: subforum});
+                    });
+            }; 
         }]);
 })();
