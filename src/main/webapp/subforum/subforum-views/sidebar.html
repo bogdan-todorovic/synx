@@ -6,10 +6,10 @@
         <button class="btn btn-danger btn-block" ng-show="isSubscribed" ng-click="unsubscribe()">
             Unsubscribe
         </button>
+        <button class="btn btn-primary btn-block" ui-sref="subforum.newtopic">
+            Submit a new topic
+        </button>
     </div>
-    <button class="btn btn-primary btn-block" ui-sref="subforum.newtopic">
-        Submit a new topic
-    </button>
     <!-- Container for general information about subforum -->
     <div class="standard-container">
         <h3 id="title">{{subforum.title}}</h3>

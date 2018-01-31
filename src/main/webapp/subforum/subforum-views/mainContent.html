@@ -19,7 +19,10 @@
         </div>
         <div>
             <a href="" class="title" ui-sref="topic({title: topic.title})">{{topic.title}}</a>
-            <p>submitted by {{topic.author}}</p>
+            <p>
+                submitted on {{topic.creationDate | date : 'dd/MM/yyyy'}}
+                by <a ui-sref="user({username: topic.author})">{{topic.author}}</a>
+            </p>
         </div>
     </div>
 </div>
