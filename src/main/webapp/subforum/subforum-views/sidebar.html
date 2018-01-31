@@ -1,4 +1,14 @@
 <div id="sidebar" class="wrapper">
+    <div>
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="searchText" ng-change="search(searchText)" placeholder="Search">
+            <span class="input-group-btn">
+                <button class="btn search" type="button">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
     <div ng-if="$root.user != null">
         <button class="btn btn-success btn-block" ng-hide="isSubscribed" ng-click="subscribe()">
             Subscribe

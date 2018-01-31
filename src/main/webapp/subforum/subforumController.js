@@ -1,9 +1,10 @@
 (function() {
     angular.module("synxApp")
-        .controller("subforumController", ["$scope", "$rootScope", "$state", "subforumPromise", "topicsPromise", "userService", "subforumService", function($scope, $rootScope, $state,subforumPromise, topicsPromise, userService, subforumService) {
+        .controller("subforumController", ["$scope", "$rootScope", "$state", "subforumPromise", "topicsPromise", "userService", "subforumService", "$filter", function($scope, $rootScope, $state,subforumPromise, topicsPromise, userService, subforumService, $filter) {
 
             $scope.subforum = subforumPromise.data;
             $scope.topics = topicsPromise.data;
+            $scope.filteredTopics = topicsPromise.data;
 
             $scope.isSubscribed = false;
             // checking if user is subscribed to current subforum
@@ -48,6 +49,10 @@
                     .then(function(response) {
                         $state.go("home");
                     });
+            };
+
+            $scope.search = function(searchText) {
+                $scope.filteredTopics = $filter("filter")($scope.topics, searchText);
             };
         }]);
 })();

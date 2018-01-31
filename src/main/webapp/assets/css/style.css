@@ -302,6 +302,13 @@
     padding: 4px;
     list-style-type: none;
 }
+.subforum-container #sidebar .input-group {
+    width: 90%;
+    margin: 0 auto;
+}
+.subforum-container #sidebar .search {
+    margin: 0 auto;
+}
 /* #endregion */
 
 /* #region New Topic Form */
