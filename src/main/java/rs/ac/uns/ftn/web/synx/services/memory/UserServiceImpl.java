@@ -90,7 +90,6 @@ public class UserServiceImpl implements UserService {
 			users.put(username, updatedUser);
 			Serializer.save("users.ser", users);
 			return updatedUser;
-			
 		}
 		return null;
 	}
