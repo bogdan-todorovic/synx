@@ -1,12 +1,12 @@
 <div class="container topic-container">
     <header>
-        <div class="likes-container">
+        <div class="likes-container" ng-show="$root.user != null">
             <a href="" class="likes">
-                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+                <span class="glyphicon glyphicon-menu-up glyp-up" ng-class="{like: isLiked}"  ng-click="toggleLike()"></span>
             </a>
-            <h5>1</h5>
+            <h5>{{topic.numberOfLikes-topic.numberOfDislikes}}</h5>
             <a href="" class="likes">
-                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+                <span class="glyphicon glyphicon-menu-down glyp-down" ng-class="{like: isDisliked}" ng-click="toggleDislike()"></span>
             </a>
         </div>
         <div class="title">

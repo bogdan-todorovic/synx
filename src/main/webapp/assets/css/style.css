@@ -223,7 +223,6 @@
 }
 /* on hover change the color of glyphicon */
 .subforum-container #subforum-main-content a.likes:hover > span {
-    color: #777;
     cursor: pointer;
 } 
 
@@ -362,12 +361,12 @@
     display: inline-block;
 }
 /* Styling likes and dislikes container */
-.topic-container  a.likes:hover {
+.topic-container  a.likes:hover, a.likes:active, a.likes:visited, a:focus {
     text-decoration: none;
 }
 /* on hover change the color of glyphicon */
 .topic-container a.likes:hover > span {
-    color: #777;
+    cursor: pointer;
 } 
 
 .topic-container .glyphicon {
@@ -375,6 +374,10 @@
     margin: 0 auto;
     font-size: 24px;
     color: #ccc;
+}
+
+.topic-container .like {
+    color: #333;
 }
 
 /* styling for number of likes */
@@ -525,3 +528,4 @@
     height: 64px;
     width: 64px;
 }
+

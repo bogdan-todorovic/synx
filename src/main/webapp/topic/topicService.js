@@ -24,5 +24,10 @@
             self.deleteTopic = function(id) {
                 return $http.delete(self.baseUrl + "/" + id);
             };
+
+            self.updateTopic = function(id, topic) {
+                return $http.put(self.baseUrl + "/" + id, topic);
+            };
+
         }]);
 })();

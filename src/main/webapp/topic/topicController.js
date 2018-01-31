@@ -69,6 +69,86 @@
                         var subforum = $scope.topic.subforum;
                         $state.go("subforum.detail", {title: subforum});
                     });
-            }; 
+            };
+            
+            $scope.isLiked = false;
+            $scope.isDisliked = false;
+
+            // checking if user has already liked/disliked current topic
+            (function () {
+                if ($rootScope.user != null) {
+                    var likedTopics = $rootScope.user.likedTopics;
+                    var dislikedTopics = $rootScope.user.dislikedTopics;
+                    var topic = $scope.topic.title; 
+                    for (var i = 0; i < likedTopics.length; i++) {
+                        if (likedTopics[i] === topic) {
+                            $scope.isLiked = true;
+                        }
+                    }
+                    for (var i = 0; i < dislikedTopics.length; i++) {
+                        if (dislikedTopics[i] === topic) {
+                            $scope.isDisliked = true;
+                        }
+                    }
+                }
+            })();
+            // TODO: UPDATE TOPIC
+            $scope.toggleLike = function() {
+                if (!$scope.isLiked && !$scope.isDisliked) {
+                    $scope.isLiked = true;
+                    $rootScope.user.likedTopics.push($scope.topic.title);
+                    updateUser();
+                    $scope.topic.numberOfLikes += 1;
+                    updateTopic();
+                }
+                else if(!$scope.isLiked && $scope.isDisliked) {
+                    $scope.isDisliked = false;
+                    var index = $rootScope.user.dislikedTopics.indexOf($scope.topic.title);
+                    if (index > -1) {
+                        $rootScope.user.dislikedTopics.splice(index,1);
+                        updateUser();
+                        $scope.topic.numberOfDislikes -= 1;
+                        updateTopic();
+                    }
+                }
+                
+            };
+
+            $scope.toggleDislike = function() {
+                if (!$scope.isLiked && !$scope.isDisliked) {
+                    $scope.isDisliked = true;
+                    $rootScope.user.dislikedTopics.push($scope.topic.title);
+                    updateUser();
+                    $scope.topic.numberOfDislikes += 1;
+                    updateTopic();
+                }
+                else if ($scope.isLiked && !$scope.isDisliked) {
+                    $scope.isLiked = false;
+                    var index = $rootScope.user.likedTopics.indexOf($scope.topic.title);
+                    if (index > -1) {
+                        $rootScope.user.likedTopics.splice(index,1);
+                        updateUser();
+                        $scope.topic.numberOfLikes -= 1;
+                        updateTopic();
+                    }
+                }
+            };
+
+            function updateUser() {
+                userService.updateUser($rootScope.user.username, $rootScope.user)
+                    .then(function(response) {
+                        var user = JSON.stringify(response.data);
+                        localStorage.setItem("currentUser", user);
+                        $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
+                    });
+            }
+
+            function updateTopic() {
+                topicService.updateTopic($scope.topic.title, $scope.topic)
+                    .then(function(response) { 
+                       $scope.topic = response.data; 
+                    });
+            }
+
         }]);
 })();
