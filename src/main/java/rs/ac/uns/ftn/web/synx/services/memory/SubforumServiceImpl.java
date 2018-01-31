@@ -73,4 +73,15 @@ public class SubforumServiceImpl implements SubforumService {
 		return subforum;
 	}
 
+	@Override
+	public boolean removeTopic(String subforumId, String topicId) {
+		Subforum subforum = findOne(subforumId);
+		if (subforum == null) {
+			return false;
+		}
+		subforum.getTopics().remove(topicId);
+		Serializer.save("subforums.ser", subforums);
+		return true;
+	}
+
 }

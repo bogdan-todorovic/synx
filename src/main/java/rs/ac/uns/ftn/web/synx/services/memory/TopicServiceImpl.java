@@ -50,6 +50,10 @@ public class TopicServiceImpl implements TopicService {
 	@Override
 	public void remove(String id) {
 		if (topics.containsKey(id)) {
+			Topic topic = topics.get(id);
+			// removing topic from subforum
+			SubforumService subforumService = new SubforumServiceImpl();
+			subforumService.removeTopic(topic.getSubforum(), topic.getTitle());
 			topics.remove(id);
 			Serializer.save("topics.ser", topics);
 		}

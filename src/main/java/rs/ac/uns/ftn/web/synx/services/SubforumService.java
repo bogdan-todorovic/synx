@@ -6,4 +6,5 @@ public interface SubforumService extends CrudService<Subforum, String> {
 
 	Subforum update(String id, Subforum newSubforum);
 	Subforum addTopic(String subforumId, String topicId);
+	boolean removeTopic(String subforumId, String topicId);
 }

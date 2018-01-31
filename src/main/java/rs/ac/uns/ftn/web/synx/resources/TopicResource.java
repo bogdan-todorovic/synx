@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -66,5 +67,17 @@ public class TopicResource {
 		uriBuilder.path(createdTopic.getTitle());
 		return Response.created(uriBuilder.build()).entity(createdTopic).build();
 	
+	}
+	
+	@PermitAll
+	@DELETE
+	@Path("/{title}")
+	public Response deleteTopic(@PathParam("title") String title) {
+		Topic foundedTopic = topicService.findOne(title);
+		if (foundedTopic == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		topicService.remove(title);
+		return Response.status(Response.Status.NO_CONTENT).build();
 	}
 }
