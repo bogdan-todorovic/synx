@@ -3,15 +3,6 @@
         <div>
             {{$index + 1}}
         </div>
-        <div>
-            <a class="likes">
-                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
-            </a>
-            <h5>1</h5>
-            <a class="likes">
-                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
-            </a>
-        </div>
         <div class="icon">
             <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType === 'LINK'">
             <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType === 'TEXT'">
@@ -21,7 +12,7 @@
             <a class="title" ui-sref="topic({title: topic.title})">{{topic.title}}</a>
             <p>
                 submitted on {{topic.creationDate | date : 'dd/MM/yyyy'}}
-                <span>by {{topic.author}}</span>
+                <span>by <a href="" ui-sref="user({username: topic.author})">{{topic.author}}</a></span>
                 <span>
                     to <a ui-sref="subforum.detail({title: topic.subforum})">{{topic.subforum}}</a>
                 </span>
