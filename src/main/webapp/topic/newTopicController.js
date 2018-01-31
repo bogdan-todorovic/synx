@@ -1,8 +1,8 @@
 (function() {
     angular.module("synxApp")
-        .controller("newTopicController", ["$scope", "previousState", "$state", "fileReaderService", "topicService", function($scope, previousState, $state, fileReaderService, topicService) {
+        .controller("newTopicController", ["$scope", "$rootScope", "previousState", "$state", "fileReaderService", "topicService", function($scope, $rootScope, previousState, $state, fileReaderService, topicService) {
             
-            previousState.params.title = $scope.topic.subforum;
+            previousState.params.title = $scope.subforum.title;
             // on form close redirect to subforum page
             $scope.closeForm = function() {
                 $state.go(previousState.name, previousState.params);
@@ -21,7 +21,7 @@
             };
 
             $scope.submit = function() {
-                console.log($scope.topic);
+                $scope.topic.author = $rootScope.user.username;
                 topicService.createTopic($scope.topic)
                     .then(function(response) {
                         // push created topic into the parent's topics collection
