@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.web.synx.resources;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
@@ -45,7 +46,7 @@ public class MessageResource {
 	@Path("/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getMessagesByReceiver(@PathParam("username") String username) {
-		List<Message> messages = messageService.getMessagesByReceiver(username);
+		Map<String, List<Message>> messages = messageService.getMessagesByReceiver(username);
 		return Response.ok(messages).build();
 	}
 }

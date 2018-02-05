@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.web.synx.services.memory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -38,12 +39,21 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> getMessagesByReceiver(String username) {
+	public Map<String, List<Message>> getMessagesByReceiver(String username) {
 		List<Message> allMessages = findAll();
-		List<Message> receivedMessages = new ArrayList<>();
+		Map<String, List<Message>> receivedMessages = new HashMap<>();
+		
 		for (Message message : allMessages) {
 			if (message.getReceiver().equals(username)) {
-				receivedMessages.add(message);
+				String key = message.getSender();
+				
+				if (receivedMessages.containsKey(key)) {
+					receivedMessages.get(key).add(message);
+				}
+				else {
+					receivedMessages.put(key, new ArrayList<>());
+					receivedMessages.get(key).add(message);
+				}
 			}
 		}
 		return receivedMessages;
