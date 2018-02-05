@@ -1,0 +1,25 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 wrapper">
+            <form ng-submit="send()" role="form">
+                <h2>Send a private message</h2>
+                <div class="alert alert-success" ng-if="alertMessage">
+                    {{alertMessage}}
+                </div>
+                <div class="form-group">
+                    <label for="username">To</label>
+                    <input type="text" class="form-control" id="username" ng-model="message.receiver" placeholder="Username" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="content">Message</label>
+                    <input type="text" class="form-control" id="content" ng-model="message.content" placeholder="Message" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

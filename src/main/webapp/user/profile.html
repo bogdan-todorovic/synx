@@ -29,7 +29,8 @@
                         <br />
                         <i class="glyphicon glyphicon-earphone"></i> {{user.phone}}
                     </p>
-                    <button class="btn btn-primary btn-block btn-sm">Send a private message</button>
+                    <button class="btn btn-primary btn-block btn-sm" ng-if="$root.user != null && $root.user.username != user.username" ui-sref="newmessage({receiver: user.username})">
+                        Send a private message</button>
                 </div>
                 <div class="followed-subforums">
                     <h5>Active in these communities</h5>
