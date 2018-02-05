@@ -4,10 +4,5 @@
             $scope.user = user;
             $scope.savedTopics = savedTopics;
             $scope.messages = messages;
-            console.log($scope.messages);
-
-            for (var user in messages) {
-                console.log(messages[user]);
-            }
         }]);
 })();

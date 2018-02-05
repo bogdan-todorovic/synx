@@ -1,11 +1,12 @@
 (function() {
     angular.module("synxApp")
-        .controller("usersController", ["$scope", "userService", function($scope, userService) {
+        .controller("usersController", ["$scope", "userService", "$filter", function($scope, userService, $filter) {
 
             
             userService.getAllUsers()
                 .then(function(response) {
                     $scope.users = response.data;
+                    $scope.filteredUsers = response.data;
                 }, 
                 function(error) {
                     console.log("Can't load users");
@@ -22,6 +23,10 @@
                             });
                     }
                 });
+            }
+
+            $scope.search = function(searchText) {
+                $scope.filteredUsers = $filter("filter")($scope.users, searchText);
             }
         }]);
 })();
