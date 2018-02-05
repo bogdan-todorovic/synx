@@ -7,7 +7,7 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 8172346389666057493L;
 	private String id;
 	private String sender;
-	private String reciever;
+	private String receiver;
 	private String content;
 	private boolean isSeen;
 	
@@ -17,7 +17,7 @@ public class Message implements Serializable {
 		super();
 		this.id = id;
 		this.sender = sender;
-		this.reciever = reciever;
+		this.receiver = reciever;
 		this.content = content;
 		this.isSeen = isSeen;
 	}
@@ -38,12 +38,12 @@ public class Message implements Serializable {
 		this.sender = sender;
 	}
 
-	public String getReciever() {
-		return reciever;
+	public String getReceiver() {
+		return receiver;
 	}
 
-	public void setReciever(String reciever) {
-		this.reciever = reciever;
+	public void setReceiver(String reciever) {
+		this.receiver = reciever;
 	}
 
 	public String getContent() {
