@@ -29,6 +29,14 @@
                 return $http.get(self.urlBase + "/savedtopics/" + username);
             };
 
+            self.getUpvotedTopics = function(username) {
+                return $http.get(self.urlBase + "/upvotedtopics/" + username);
+            };
+
+            self.getDownvotedTopics = function(username) {
+                return $http.get(self.urlBase + "/downvotedtopics/" + username);
+            };
+
             self.updateRoles = function(id, newRole) {
                 var req = {
                     method: 'PUT',

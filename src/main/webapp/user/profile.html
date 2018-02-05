@@ -9,12 +9,14 @@
                     <li role="presentation">
                         <a ui-sref="user.upvoted" ui-sref-active="active">Upvoted</a>
                     </li>
-                    <li role="presentation"><a href="">Downvoted</a></li>
+                    <li role="presentation">
+                        <a ui-sref="user.downvoted" ui-sref-active="active">Downvoted</a></li>
                     <li role="presentation">
                         <a ui-sref="user.messages" ui-sref-active="active">Messages</a></li>
                 </ul>
                 <div ui-view="saved"></div>
                 <div ui-view="upvoted"></div>
+                <div ui-view="downvoted"></div>
                 <div ui-view="messages"></div>
             </main>	
         </div>

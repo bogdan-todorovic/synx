@@ -1,9 +1,9 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Liked topics</h3>
+        <h3 class="panel-title">Disliked topics</h3>
     </div>
     <div class="panel-body">
-        <div class="saved-topics" ng-repeat="topic in upvotedTopics">
+        <div class="saved-topics" ng-repeat="topic in downvotedTopics">
             <div class="icon">
                 <img src="assets/images/link-icon.png" alt="oops" ng-if="topic.topicType === 'LINK'">
                 <img src="assets/images/text-icon.png" alt="oops" ng-if="topic.topicType === 'TEXT'">

@@ -43,6 +43,19 @@
                                 .then(function(response) {
                                     return response.data;
                                 });
+                        },
+                        upvotedTopics: function($stateParams, userService) {
+                            return userService.getUpvotedTopics($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
+                        },
+
+                        downvotedTopics: function($stateParams, userService) {
+                            return userService.getDownvotedTopics($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
                         }
                     }
                 })
@@ -61,6 +74,15 @@
                     views: {
                         "upvoted": {
                             templateUrl: "user/profile-views/upvoted.html"
+                        }
+                    }
+                })
+
+                .state("user.downvoted", {
+                    url: "/downvoted",
+                    views: {
+                        "downvoted": {
+                            templateUrl: "user/profile-views/downvoted.html"
                         }
                     }
                 })
