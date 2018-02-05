@@ -16,4 +16,7 @@ public interface UserService extends CrudService<User, String> {
 	User update(User updatedUser, String username);
 	void removeFollowedSubforum(String subforumId);
 	List<Topic> getSavedTopics(String username);
+	List<Topic> getUpvotedTopics(String username);
+	List<Topic> getDownvotedTopics(String username);
+	
 }

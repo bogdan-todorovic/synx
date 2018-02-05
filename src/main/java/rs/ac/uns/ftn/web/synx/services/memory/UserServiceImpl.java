@@ -122,4 +122,38 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public List<Topic> getUpvotedTopics(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<Topic> upvoted = new ArrayList<>();
+			TopicService topicService = new TopicServiceImpl();
+			for (String topicId : user.getLikedTopics()) {
+				Topic foundedTopic = topicService.findOne(topicId);
+				if (foundedTopic != null) {
+					upvoted.add(foundedTopic);
+				}
+			}
+			return upvoted;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Topic> getDownvotedTopics(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<Topic> downvoted = new ArrayList<>();
+			TopicService topicService = new TopicServiceImpl();
+			for (String topicId : user.getDislikedTopics()) {
+				Topic foundedTopic = topicService.findOne(topicId);
+				if (foundedTopic != null) {
+					downvoted.add(foundedTopic);
+				}
+			}
+			return downvoted;
+		}
+		return null;
+	}
+
 }

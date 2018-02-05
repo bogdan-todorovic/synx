@@ -60,6 +60,30 @@ public class UserResource {
 	
 	@PermitAll
 	@GET
+	@Path("/upvotedtopics/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUpvotedTopics(@PathParam("username") String username) {
+		List<Topic> topics = userService.getUpvotedTopics(username);
+		if (topics == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(topics).build();
+	}
+	
+	@PermitAll
+	@GET
+	@Path("/downvotedtopics/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getDownvotedTopics(@PathParam("username") String username) {
+		List<Topic> topics = userService.getDownvotedTopics(username);
+		if (topics == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(topics).build();
+	}
+	
+	@PermitAll
+	@GET
 	@Path("/moderators")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllModerators() {
