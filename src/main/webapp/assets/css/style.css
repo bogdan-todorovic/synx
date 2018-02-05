@@ -528,4 +528,10 @@
     height: 64px;
     width: 64px;
 }
+.messages {
+    margin-bottom: 0;
+}
+.messages .panel-heading:hover {
+    cursor: pointer;
+}
 

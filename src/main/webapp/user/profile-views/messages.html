@@ -1,0 +1,9 @@
+<div class="panel panel-default messages" ng-repeat="(key, value) in messages">
+    <div class="panel-heading" ng-click="show = !show">
+        {{key}}
+        <span class="badge">{{value.length}}</span>
+    </div>
+    <div class="panel-body" ng-show="show">
+        <div ng-repeat="message in value">{{message.content}}</div>
+    </div>
+</div>

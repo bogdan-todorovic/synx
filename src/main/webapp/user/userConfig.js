@@ -37,6 +37,12 @@
                                 .then(function(response) {
                                     return response.data;
                                 });
+                        },
+                        messages: function($stateParams, messageService) {
+                            return messageService.getAllMessagesForUser($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
                         }
                     }
                 })
@@ -55,6 +61,15 @@
                     views: {
                         "upvoted": {
                             templateUrl: "user/profile-views/upvoted.html"
+                        }
+                    }
+                })
+
+                .state("user.messages", {
+                    url: "/messages",
+                    views: {
+                        "messages": {
+                            templateUrl: "user/profile-views/messages.html"
                         }
                     }
                 });

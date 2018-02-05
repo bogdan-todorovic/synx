@@ -8,5 +8,10 @@
             self.createMessage = function(data) {
                 return $http.post(self.baseUrl, data);
             };
+
+            self.getAllMessagesForUser = function(id) {
+                return $http.get(self.baseUrl + "/" + id);
+            };
+            
         }]); 
 })();
