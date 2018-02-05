@@ -92,7 +92,7 @@
                     }
                 }
             })();
-            // TODO: UPDATE TOPIC
+            
             $scope.toggleLike = function() {
                 if (!$scope.isLiked && !$scope.isDisliked) {
                     $scope.isLiked = true;
