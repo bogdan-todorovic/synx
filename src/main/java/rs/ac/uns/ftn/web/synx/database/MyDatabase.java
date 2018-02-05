@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.web.synx.database;
 import java.util.Map;
 
 import rs.ac.uns.ftn.web.synx.model.Comment;
+import rs.ac.uns.ftn.web.synx.model.Message;
 import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
@@ -14,6 +15,7 @@ public class MyDatabase {
 	private static Map<String, Subforum> subforums = Serializer.load("subforums.ser");
 	private static Map<String, Topic> topics = Serializer.load("topics.ser");
 	private static Map<String, Comment> comments = Serializer.load("comments.ser");
+	private static Map<String, Message> messages = Serializer.load("messages.ser");
 	
 	public static Map<String, User> getUsers() {
 		return users;
@@ -45,6 +47,14 @@ public class MyDatabase {
 
 	public static void setComments(Map<String, Comment> comments) {
 		MyDatabase.comments = comments;
+	}
+
+	public static Map<String, Message> getMessages() {
+		return messages;
+	}
+
+	public static void setMessages(Map<String, Message> messages) {
+		MyDatabase.messages = messages;
 	}
 	
 	

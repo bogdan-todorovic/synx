@@ -88,7 +88,7 @@ public class TopicServiceImpl implements TopicService {
 		if (topics.containsKey(title)) {
 			topics.remove(title);
 			topics.put(title, updatedTopic);
-			Serializer.save("users.ser", topics);
+			Serializer.save("topics.ser", topics);
 			return updatedTopic;
 		}
 		return null;
