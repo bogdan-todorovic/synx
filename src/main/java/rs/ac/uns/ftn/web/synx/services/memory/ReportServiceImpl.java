@@ -71,6 +71,8 @@ public class ReportServiceImpl implements ReportService {
 			if (report.getDecree().equals(ReportDecree.ACCEPTED)) {
 				mForReportAuthor.setContent("Your report has been accepted. " + report.getSubforum() + " subforum will be deleted.");
 				mForSubforumAuthor.setContent("Report from user " + report.getAuthor() + " on " + report.getSubforum() + " subforum has been accepted. Subforum will be deleted.");
+				SubforumService subforumService = new SubforumServiceImpl();
+				subforumService.remove(report.getSubforum());
 			}
 			else if (report.getDecree().equals(ReportDecree.WARNING)) {
 				mForReportAuthor.setContent("Your report for " + report.getSubforum() + " subforum has been adopted. Author of the subforum will be warned.");
