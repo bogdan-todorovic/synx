@@ -1,0 +1,23 @@
+<div class="container login-container report-form">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 wrapper">
+            <form ng-submit="send()" role="form">
+                <h2>How can we help?</h2>
+                <div class="alert alert-success" ng-if="alertMessage">
+                    {{alertMessage}}
+                </div>
+                <div class="form-group" ng-repeat="message in reportMessages">
+                    <label for="{{message}}">
+                        <input type="radio" ng-model="report.content" ng-value="message" id="{{message}}" name="option">
+                        {{message}}
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"  ng-disabled="!report.content">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
