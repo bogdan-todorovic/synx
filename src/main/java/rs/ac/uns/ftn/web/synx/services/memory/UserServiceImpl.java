@@ -10,6 +10,7 @@ import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
 import rs.ac.uns.ftn.web.synx.services.TopicService;
 import rs.ac.uns.ftn.web.synx.services.UserService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 import rs.ac.uns.ftn.web.synx.util.UserRole;
 
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 		entity.setRegistrationDate(new Date());
 		
 		users.put(entity.getUsername(), entity);
-		Serializer.save("users.ser", users);
+		Serializer.save(PathManager.USERS, users);
 		return entity;
 	}
 
@@ -66,7 +67,7 @@ public class UserServiceImpl implements UserService {
 	public boolean changeRole(User user, String newRole) {
 		if (newRole.equals("USER") || newRole.equals("MODERATOR") || newRole.equals("ADMIN")) {
 			user.setRole(UserRole.valueOf(newRole));
-			Serializer.save("users.ser", users);
+			Serializer.save(PathManager.USERS, users);
 			return true;
 		}
 		return false;
@@ -88,7 +89,7 @@ public class UserServiceImpl implements UserService {
 		if (users.containsKey(username)) {
 			users.remove(username);
 			users.put(username, updatedUser);
-			Serializer.save("users.ser", users);
+			Serializer.save(PathManager.USERS, users);
 			return updatedUser;
 		}
 		return null;
@@ -101,7 +102,7 @@ public class UserServiceImpl implements UserService {
 				user.getFollowedSubforums().remove(subforumId);
 			}
 		}
-		Serializer.save("users.ser", users);
+		Serializer.save(PathManager.USERS, users);
 		
 	}
 

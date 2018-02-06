@@ -10,6 +10,7 @@ import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.services.SubforumService;
 import rs.ac.uns.ftn.web.synx.services.TopicService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class TopicServiceImpl implements TopicService {
@@ -43,7 +44,7 @@ public class TopicServiceImpl implements TopicService {
 		}
 		entity.setCreationDate(new Date());
 		topics.put(entity.getTitle(), entity);
-		Serializer.save("topics.ser", topics);
+		Serializer.save(PathManager.TOPICS, topics);
 		return entity;
 	}
 
@@ -55,7 +56,7 @@ public class TopicServiceImpl implements TopicService {
 			SubforumService subforumService = new SubforumServiceImpl();
 			subforumService.removeTopic(topic.getSubforum(), topic.getTitle());
 			topics.remove(id);
-			Serializer.save("topics.ser", topics);
+			Serializer.save(PathManager.TOPICS, topics);
 		}
 
 	}
@@ -79,7 +80,7 @@ public class TopicServiceImpl implements TopicService {
 			return null;
 		}
 		topic.getComments().add(commentId);
-		Serializer.save("topics.ser", topics);
+		Serializer.save(PathManager.TOPICS, topics);
 		return topic;
 	}
 
@@ -88,7 +89,7 @@ public class TopicServiceImpl implements TopicService {
 		if (topics.containsKey(title)) {
 			topics.remove(title);
 			topics.put(title, updatedTopic);
-			Serializer.save("topics.ser", topics);
+			Serializer.save(PathManager.TOPICS, topics);
 			return updatedTopic;
 		}
 		return null;

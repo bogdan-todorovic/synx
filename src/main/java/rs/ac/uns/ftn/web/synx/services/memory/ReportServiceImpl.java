@@ -13,6 +13,7 @@ import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.services.MessageService;
 import rs.ac.uns.ftn.web.synx.services.ReportService;
 import rs.ac.uns.ftn.web.synx.services.SubforumService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.ReportDecree;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
@@ -38,7 +39,7 @@ public class ReportServiceImpl implements ReportService {
 		entity.setId(UUID.randomUUID().toString());
 		entity.setCreationDate(Calendar.getInstance().getTime());
 		reports.put(entity.getId(), entity);
-		Serializer.save("reports.ser", reports);
+		Serializer.save(PathManager.REPORTS, reports);
 		return entity;
 	}
 
@@ -86,7 +87,7 @@ public class ReportServiceImpl implements ReportService {
 			messageService.create(mForSubforumAuthor);
 		}
 		reports.put(id, report);
-		Serializer.save("reports.ser", reports);
+		Serializer.save(PathManager.REPORTS, reports);
 		return report;
 	}
 	

@@ -11,6 +11,7 @@ import rs.ac.uns.ftn.web.synx.model.Comment;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.services.CommentService;
 import rs.ac.uns.ftn.web.synx.services.TopicService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class CommentServiceImpl implements CommentService {
@@ -52,7 +53,7 @@ public class CommentServiceImpl implements CommentService {
 			parentComment.getSubcomments().add(entity);
 		}
 		comments.put(commentId, entity);
-		Serializer.save("comments.ser", comments);
+		Serializer.save(PathManager.COMMENTS, comments);
 		return entity;
 	}
 

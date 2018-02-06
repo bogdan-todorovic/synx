@@ -9,6 +9,7 @@ import java.util.UUID;
 import rs.ac.uns.ftn.web.synx.database.MyDatabase;
 import rs.ac.uns.ftn.web.synx.model.Message;
 import rs.ac.uns.ftn.web.synx.services.MessageService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class MessageServiceImpl implements MessageService {
@@ -30,7 +31,7 @@ public class MessageServiceImpl implements MessageService {
 		String id = UUID.randomUUID().toString();
 		entity.setId(id);
 		messages.put(id, entity);
-		Serializer.save("messages.ser", messages);
+		Serializer.save(PathManager.MESSAGES, messages);
 		return entity;
 	}
 

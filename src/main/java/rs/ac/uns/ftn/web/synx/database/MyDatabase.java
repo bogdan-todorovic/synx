@@ -8,16 +8,17 @@ import rs.ac.uns.ftn.web.synx.model.Report;
 import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class MyDatabase {
 	
-	private static Map<String, User> users = Serializer.load("users.ser");
-	private static Map<String, Subforum> subforums = Serializer.load("subforums.ser");
-	private static Map<String, Topic> topics = Serializer.load("topics.ser");
-	private static Map<String, Comment> comments = Serializer.load("comments.ser");
-	private static Map<String, Message> messages = Serializer.load("messages.ser");
-	private static Map<String, Report> reports = Serializer.load("reports.ser");
+	private static Map<String, User> users = Serializer.load(PathManager.USERS);
+	private static Map<String, Subforum> subforums = Serializer.load(PathManager.SUBFORUMS);
+	private static Map<String, Topic> topics = Serializer.load(PathManager.TOPICS);
+	private static Map<String, Comment> comments = Serializer.load(PathManager.COMMENTS);
+	private static Map<String, Message> messages = Serializer.load(PathManager.MESSAGES);
+	private static Map<String, Report> reports = Serializer.load(PathManager.REPORTS);
 	
 	public static Map<String, User> getUsers() {
 		return users;

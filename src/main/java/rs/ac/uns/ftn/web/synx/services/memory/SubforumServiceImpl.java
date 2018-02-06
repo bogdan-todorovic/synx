@@ -9,6 +9,7 @@ import rs.ac.uns.ftn.web.synx.model.Subforum;
 import rs.ac.uns.ftn.web.synx.services.SubforumService;
 import rs.ac.uns.ftn.web.synx.services.TopicService;
 import rs.ac.uns.ftn.web.synx.services.UserService;
+import rs.ac.uns.ftn.web.synx.util.PathManager;
 import rs.ac.uns.ftn.web.synx.util.Serializer;
 
 public class SubforumServiceImpl implements SubforumService {
@@ -35,7 +36,7 @@ public class SubforumServiceImpl implements SubforumService {
 		}
 		
 		subforums.put(entity.getTitle(), entity);
-		Serializer.save("subforums.ser", subforums);
+		Serializer.save(PathManager.SUBFORUMS, subforums);
 		return entity;
 	}
 
@@ -51,7 +52,7 @@ public class SubforumServiceImpl implements SubforumService {
 			UserService userService = new UserServiceImpl();
 			userService.removeFollowedSubforum(id);
 			subforums.remove(id);
-			Serializer.save("subforums.ser", subforums);
+			Serializer.save(PathManager.SUBFORUMS, subforums);
 		}
 	}
 
@@ -59,7 +60,7 @@ public class SubforumServiceImpl implements SubforumService {
 	public Subforum update(String id, Subforum newSubforum) {
 		remove(id);
 		Subforum updatedSubforum = create(newSubforum);
-		Serializer.save("subforums.ser", subforums);
+		Serializer.save(PathManager.SUBFORUMS, subforums);
 		return updatedSubforum;
 	}
 
@@ -70,7 +71,7 @@ public class SubforumServiceImpl implements SubforumService {
 			return null;
 		}
 		subforum.getTopics().add(topicId);
-		Serializer.save("subforums.ser", subforums);
+		Serializer.save(PathManager.SUBFORUMS, subforums);
 		return subforum;
 	}
 
@@ -81,7 +82,7 @@ public class SubforumServiceImpl implements SubforumService {
 			return false;
 		}
 		subforum.getTopics().remove(topicId);
-		Serializer.save("subforums.ser", subforums);
+		Serializer.save(PathManager.SUBFORUMS, subforums);
 		return true;
 	}
 
