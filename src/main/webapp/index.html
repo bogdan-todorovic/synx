@@ -65,6 +65,7 @@
     <script src="report/newReportController.js"></script>
     <script src="report/reportService.js"></script>
     <script src="report/reportConfig.js"></script>
+    <script src="report/reportsController.js"></script>
 </head>
 
 <body>
@@ -108,6 +109,9 @@
                     <!-- Users page -->
                     <li>
                         <a ui-sref="users" ui-sref-active="active">Users</a>
+                    </li>
+                    <li>
+                        <a ui-sref="reports" ui-sref-active="active" ng-if="$root.user.role == 'ADMIN'">Reports</a>
                     </li>
                 </ul>
 

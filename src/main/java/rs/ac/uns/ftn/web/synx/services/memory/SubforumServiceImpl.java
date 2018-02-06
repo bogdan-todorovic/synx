@@ -44,7 +44,8 @@ public class SubforumServiceImpl implements SubforumService {
 		if (subforums.containsKey(id)) {
 			Subforum subforum = subforums.get(id);
 			TopicService topicService = new TopicServiceImpl();
-			for (String topicId : subforum.getTopics()) {
+			List<String> ts = subforum.getTopics();
+			for (String topicId : ts) {
 				topicService.remove(topicId);
 			}
 			UserService userService = new UserServiceImpl();

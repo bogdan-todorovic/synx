@@ -9,7 +9,13 @@
                 return $http.post(self.baseUrl, data);
             };
 
-            
+            self.getReports = function() {
+                return $http.get(self.baseUrl + "/admin");
+            };
+
+            self.updateReport = function(id, data) {
+                return $http.put(self.baseUrl + "/" + id, data);
+            };
             
         }]); 
 })();
