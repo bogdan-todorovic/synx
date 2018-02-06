@@ -123,6 +123,9 @@
                     <li ng-if="$root.user == null">
                         <a ui-sref="login" ui-sref-active="active">Log In</a>
                     </li>
+                    <li ng-if="$root.user != null">
+                        <a ui-sref="user({username: $root.user.username})">{{$root.user.username}}</a>
+                    </li>
                     <li ng-controller="logoutController" ng-if="$root.user != null">
                         <a ui-sref="home" ng-click="logout()">Log out</a>
                     </li>
