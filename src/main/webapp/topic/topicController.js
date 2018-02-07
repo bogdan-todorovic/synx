@@ -9,6 +9,7 @@
                 subforumService.getSubforum($scope.topic.subforum)
                     .then(function(response) {
                         $scope.subforum = response.data;
+                        $rootScope.commentSubforum = response.data;
                     });
             })();
 
@@ -16,6 +17,7 @@
             $scope.newRootComment.topic = $scope.topic.title;
 
             $scope.createRootComment = function() {
+                $scope.newRootComment.author = $rootScope.user.username;
                 commentService.createComment($scope.newRootComment)
                     .then(function(response) {
                         $scope.comments.push(response.data);

@@ -1,25 +1,45 @@
 <div class="comment-container">
-    <div class="score-container">
-        <a href="" class="likes">
-            <span class="glyphicon glyphicon-menu-up glyp-up"></span>
-        </a>
-        <h5>1</h5>
-        <a href="" class="likes">
-            <span class="glyphicon glyphicon-menu-down glyp-down"></span>
-        </a>
+    <div ng-if="root.deleted">
+        <em>deleted</em>
     </div>
-    <div class="content-container">
-        <a href="">author {{root.author}}</a>
-        <span class="date">submited on {{ root.creationDate | date : 'dd/MM/yyyy' }}</span>
-        <p>{{root.content}}</p>
-        <a href="">save</a>
-        <a href="" ng-click="toggleShow()">reply</a>
-        <a href="">report</a>
-
-        <div class="reply" ng-show="show">
-            <textarea cols="50" rows="3" ng-model="newSubcomment.content"></textarea>
-            <button class="btn btn-default btn-sm" ng-click="createSubcomment()">Save</button>
-            <button class="btn btn-default btn-sm" ng-click="toggleShow()">Cancel</button>
+    <div ng-if="!root.deleted">
+        <div class="score-container" ng-if="$root.user != null">
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+            </a>
+            <h5>1</h5>
+            <a href="" class="likes">
+                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+            </a>
+        </div>
+        
+        <div class="content-container" ng-if="!root.deleted">
+            <span>
+                <small>author</small>
+                <a href=""> {{root.author}}</a>
+                <small ng-if="root.edited"><em>edited</em></small>
+            </span>
+            <span class="date">submited on {{ root.creationDate | date : 'dd/MM/yyyy' }}</span>
+            <p ng-hide="editMode">{{root.content}}</p>
+            <div ng-show="editMode">
+                <textarea cols="100" rows="3" ng-model="temp.newcontent"></textarea>
+                <div>
+                    <button class="btn btn-xs btn-default" ng-click="update()">update</button>
+                </div>
+            </div>
+            
+            <div ng-if="$root.user != null">
+                <a href="">save</a>
+                <a href="" ng-click="toggleShow()">reply</a>
+                <a href="">report</a>
+                <a href="" ng-click="toggleEditMode()" ng-if="$root.user.username == root.author || $root.user.username ==temp.lead">edit</a>
+                <a href="" ng-click="delete()" ng-if="$root.user.username==root.author || $root.user.username==temp.lead || $root.user.role == 'ADMIN'">delete</a>
+            </div>
+            <div class="reply" ng-show="show">
+                <textarea cols="50" rows="3" ng-model="newSubcomment.content"></textarea>
+                <button class="btn btn-default btn-sm" ng-click="createSubcomment()">Save</button>
+                <button class="btn btn-default btn-sm" ng-click="toggleShow()">Cancel</button>
+            </div>
         </div>
     </div>
     <ul>
