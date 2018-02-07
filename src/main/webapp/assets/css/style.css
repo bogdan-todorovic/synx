@@ -361,10 +361,17 @@
 .topic-container header {
     border-bottom: 1px solid #ccc;
 }
-
+/*
 .topic-container .likes-container, .topic-container .title {
     display: inline-block;
+}*/
+
+.topic-container .likes-container {
+    float: left;
+    clear: none;
+    padding: 5px 5px 15px 10px;
 }
+
 /* Styling likes and dislikes container */
 .topic-container  a.likes:hover, a.likes:active, a.likes:visited, a:focus {
     text-decoration: none;
@@ -394,7 +401,8 @@
 }
 
 .topic-container .title {
-    padding: 10px;
+    margin-left: 30px;
+    padding-left: 10px;
 }
 .topic-container .title > h4 {
     font-size: 22px;
@@ -405,7 +413,7 @@
     margin-bottom: 0;
 }
 .topic-container .content {
-    padding: 5px;
+    padding-left: 10px;
     margin-bottom: 10px;
     margin-left: 30px;
 }
@@ -447,10 +455,13 @@
     padding: 5px;
 }
 
+.comment-container .score-container {
+    float: left;
+    clear: none;
+}
 
-
-.comment-container .score-container, .comment-container .content-container {
-    display: inline-block;
+.comment-container .content-container {
+    margin-left: 25px;
 }
 
 .comment-container .score-container .glyphicon {
@@ -461,10 +472,6 @@
     margin: 3px 0;
     font-weight: normal;
     font-size: 14px;
-}
-
-.comment-container .content-container {
-    margin-left: 10px;
 }
 
 .comment-container .content-container a {
