@@ -76,4 +76,18 @@ public class CommentServiceImpl implements CommentService {
 		return commentsOfTheTopic;
 	}
 
+	@Override
+	public Comment update(String id, Comment comment) {
+		if (comments.containsKey(id)) {
+			Comment c = comments.get(id);
+			c.setContent(comment.getContent());
+			c.setEdited(comment.isEdited());
+			c.setNumberOfLikes(comment.getNumberOfLikes());
+			c.setNumberOfDislikes(comment.getNumberOfDislikes());
+			Serializer.save(PathManager.COMMENTS, comments);
+			return comment;
+		}
+		return null;
+	}
+
 }

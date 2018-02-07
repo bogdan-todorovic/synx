@@ -6,4 +6,6 @@ import rs.ac.uns.ftn.web.synx.model.Comment;
 
 public interface CommentService extends CrudService<Comment, String> {
 	List<Comment> findAllByTopicId(String topicId);
+
+	Comment update(String id, Comment comment);
 }

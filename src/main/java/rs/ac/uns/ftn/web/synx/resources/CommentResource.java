@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -46,6 +47,19 @@ public class CommentResource {
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
 		uriBuilder.path(createdComment.getId());
 		return Response.created(uriBuilder.build()).entity(createdComment).build();
+	}
+	
+	@PermitAll
+	@PUT
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateComment(@PathParam("id") String id, Comment comment) {
+		Comment updatedComment = commentService.update(id, comment);
+		if (updatedComment == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(updatedComment).build();
 	}
 	
 	@PermitAll
