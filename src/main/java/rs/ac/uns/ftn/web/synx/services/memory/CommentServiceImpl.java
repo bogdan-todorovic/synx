@@ -59,8 +59,9 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public void remove(String id) {
-		// TODO Auto-generated method stub
-		
+		Comment comment = comments.get(id);
+		comment.setDeleted(true);
+		Serializer.save(PathManager.COMMENTS, comments);
 	}
 
 	@Override

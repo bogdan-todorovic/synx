@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -45,6 +46,18 @@ public class CommentResource {
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
 		uriBuilder.path(createdComment.getId());
 		return Response.created(uriBuilder.build()).entity(createdComment).build();
+	}
+	
+	@PermitAll
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response removeComment(@PathParam("id") String id) {
+		if (commentService.findOne(id) != null) {
+			commentService.remove(id);
+			return Response.status(Response.Status.NO_CONTENT).build();
+		}
+		return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	
 }
