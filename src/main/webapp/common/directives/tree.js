@@ -1,6 +1,6 @@
 (function() {
     angular.module("synxApp")
-        .directive("tree", function(recursionHelperService, commentService, $rootScope) {
+        .directive("tree", function(recursionHelperService, commentService, $rootScope, userService) {
             return {
                 restrict: "E",
                 templateUrl: "comment/comment.html",
@@ -59,6 +59,46 @@
                                         scope.root.deleted = true;
                                     });
                             };
+
+
+
+                            scope.temp.isSaved = false;
+                            // checking if user has already saved current comment
+                            (function() {
+                                if ($rootScope.user != null) {
+                                    var savedComments = $rootScope.user.savedComments;
+                                    var currentComment = scope.root.id;
+                                    for (var i = 0; i < savedComments.length; i++) {
+                                        if (savedComments[i] === currentComment) {
+                                            scope.temp.isSaved = true;
+                                        }
+                                    }
+                                }
+                            })();
+
+                            scope.save = function() {
+                                $rootScope.user.savedComments.push(scope.root.id);
+                                scope.temp.isSaved = true;
+                                updateUser();
+                            };
+
+                            scope.unsave = function() {
+                                var index = $rootScope.user.savedComments.indexOf(scope.root.id);
+                                if (index > -1) {
+                                    $rootScope.user.savedComments.splice(index,1);
+                                    scope.temp.isSaved = false;
+                                    updateUser();
+                                }
+                            };
+
+                            function updateUser() {
+                                userService.updateUser($rootScope.user.username, $rootScope.user)
+                                        .then(function(response) {
+                                            var user = JSON.stringify(response.data);
+                                            localStorage.setItem("currentUser", user);
+                                            $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
+                                        });
+                            }
                         }
                     });
                 }

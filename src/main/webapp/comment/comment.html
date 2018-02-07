@@ -29,7 +29,8 @@
             </div>
             
             <div ng-if="$root.user != null">
-                <a href="">save</a>
+                <a href="" ng-click="save()" ng-hide="temp.isSaved">save</a>
+                <a href="" ng-click="unsave()" ng-show="temp.isSaved">unsave</a>
                 <a href="" ng-click="toggleShow()">reply</a>
                 <a href="">report</a>
                 <a href="" ng-click="toggleEditMode()" ng-if="$root.user.username == root.author || $root.user.username ==temp.lead">edit</a>
