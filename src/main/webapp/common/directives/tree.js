@@ -46,7 +46,6 @@
                                     scope.root.edited = true;
                                 }
                                 scope.root.content = scope.temp.newcontent;
-                                console.log(scope.root);
                                 commentService.update(scope.root.id, scope.root)
                                     .then(function(response) {
                                         scope.toggleEditMode();

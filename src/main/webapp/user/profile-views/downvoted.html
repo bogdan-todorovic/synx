@@ -20,3 +20,20 @@
         </div>
     </div>
 </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Disliked comments</h3>
+    </div>
+    <div class="panel-body">
+        <div class="saved-comments" ng-repeat="comment in downvotedComments">
+            <h4><a ui-sref="topic({title: comment.topic})">{{comment.topic}}</a></h4>
+            <div>
+                <small>
+                    <a ui-sref="user({username: comment.author})">by {{comment.author}}</a>
+                    <span> {{comment.numberOfLikes-numberOfDislikes}} points</span>
+                </small>
+            </div>
+            <p>{{comment.content}}</p>
+        </div>
+    </div>
+</div>

@@ -41,6 +41,14 @@
                 return $http.get(self.urlBase + "/downvotedtopics/" + username);
             };
 
+            self.getUpvotedComments = function(username) {
+                return $http.get(self.urlBase + "/upvotedcomments/" + username);
+            };
+
+            self.getDownvotedComments = function(username) {
+                return $http.get(self.urlBase + "/downvotedcomments/" + username);
+            };
+
             self.updateRoles = function(id, newRole) {
                 var req = {
                     method: 'PUT',

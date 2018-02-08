@@ -61,6 +61,18 @@
                                 .then(function(response) {
                                     return response.data;
                                 });
+                        },
+                        upvotedComments: function($stateParams, userService) {
+                            return userService.getUpvotedComments($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
+                        },
+                        downvotedComments: function($stateParams, userService) {
+                            return userService.getDownvotedComments($stateParams.username)
+                                .then(function(response) {
+                                    return response.data;
+                                });
                         }
                     }
                 })

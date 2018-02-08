@@ -12,7 +12,7 @@
                     <li role="presentation">
                         <a ui-sref="user.downvoted" ui-sref-active="active">Downvoted</a></li>
                     <li role="presentation">
-                        <a ui-sref="user.messages" ui-sref-active="active">Messages</a></li>
+                        <a ui-sref="user.messages" ui-sref-active="active" ng-if="$root.user.username == user.username">Messages</a></li>
                 </ul>
                 <div ui-view="saved"></div>
                 <div ui-view="upvoted"></div>
