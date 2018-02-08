@@ -32,7 +32,7 @@
     </header>
 
     <main>
-        <div class="root-comment">
+        <div class="root-comment" ng-if="$root.user != null">
             <textarea cols="50" rows="4" ng-model="newRootComment.content" placeholder="Tell us what do you think"></textarea>
             <button class="btn btn-default btn-sm" ng-click="createRootComment()">Save</button>
         </div>
