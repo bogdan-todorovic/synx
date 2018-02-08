@@ -160,6 +160,23 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Comment> getUpvotedComments(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<Comment> upvoted = new ArrayList<>();
+			CommentService commentService = new CommentServiceImpl();
+			for (String commentId : user.getLikedComments()) {
+				Comment comment = commentService.findOne(commentId);
+				if (comment != null && !comment.isDeleted()) {
+					upvoted.add(comment);
+				}
+			}
+			return upvoted;
+		}
+		return null;
+	}
 
 	@Override
 	public List<Topic> getDownvotedTopics(String username) {
@@ -178,5 +195,21 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public List<Comment> getDownvotedComments(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<Comment> downvoted = new ArrayList<>();
+			CommentService commentService = new CommentServiceImpl();
+			for (String commentId : user.getDislikedComments()) {
+				Comment comment = commentService.findOne(commentId);
+				if (comment != null && !comment.isDeleted()) {
+					downvoted.add(comment);
+				}
+			}
+			return downvoted;
+		}
+		return null;
+	}
 
 }

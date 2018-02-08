@@ -20,5 +20,7 @@ public interface UserService extends CrudService<User, String> {
 	List<Comment> getSavedComments(String username);
 	List<Topic> getUpvotedTopics(String username);
 	List<Topic> getDownvotedTopics(String username);
+	List<Comment> getUpvotedComments(String username);
+	List<Comment> getDownvotedComments(String username);
 	
 }

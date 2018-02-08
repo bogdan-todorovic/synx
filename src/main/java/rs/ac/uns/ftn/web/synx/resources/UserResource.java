@@ -85,6 +85,18 @@ public class UserResource {
 	
 	@PermitAll
 	@GET
+	@Path("/upvotedcomments/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUpvotedComments(@PathParam("username") String username) {
+		List<Comment> comments = userService.getUpvotedComments(username);
+		if (comments == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(comments).build();
+	}
+	
+	@PermitAll
+	@GET
 	@Path("/downvotedtopics/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getDownvotedTopics(@PathParam("username") String username) {
@@ -93,6 +105,18 @@ public class UserResource {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		return Response.ok(topics).build();
+	}
+	
+	@PermitAll
+	@GET
+	@Path("/downvotedcomments/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getDownvotedComments(@PathParam("username") String username) {
+		List<Comment> comments = userService.getDownvotedComments(username);
+		if (comments == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(comments).build();
 	}
 	
 	@PermitAll
