@@ -5,11 +5,11 @@
     <div ng-if="!root.deleted">
         <div class="score-container" ng-if="$root.user != null">
             <a href="" class="likes">
-                <span class="glyphicon glyphicon-menu-up glyp-up"></span>
+                <span class="glyphicon glyphicon-menu-up glyp-up" ng-class="{like: temp.isLiked}" ng-click="toggleLike()"></span>
             </a>
-            <h5>1</h5>
+            <h5>{{root.numberOfLikes-root.numberOfDislikes}}</h5>
             <a href="" class="likes">
-                <span class="glyphicon glyphicon-menu-down glyp-down"></span>
+                <span class="glyphicon glyphicon-menu-down glyp-down" ng-class="{like: temp.isDisliked}" ng-click="toggleDislike()"></span>
             </a>
         </div>
         

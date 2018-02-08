@@ -99,6 +99,68 @@
                                             $rootScope.user = JSON.parse(localStorage.getItem("currentUser"));
                                         });
                             }
+
+                            scope.temp.isLiked = false;
+                            scope.temp.isDisliked = false;
+
+                             // checking if user has already liked/disliked current comment
+                            (function() {
+                                if ($rootScope.user != null) {
+                                    var likedComments = $rootScope.user.likedComments;
+                                    var dislikedComments = $rootScope.user.dislikedComments;
+                                    var comment = scope.root.id;
+                                    for (var i = 0; i < likedComments.length; i++) {
+                                        if (likedComments[i] === comment) {
+                                            scope.temp.isLiked = true;
+                                        }
+                                    }
+                                    for (var i = 0; i < dislikedComments.length; i++) {
+                                        if (dislikedComments[i] === comment) {
+                                            scope.temp.isDisliked = true;
+                                        }
+                                    }
+                                }
+                            })();
+
+                            scope.toggleLike = function() {
+                                if (!scope.temp.isLiked && !scope.temp.isDisliked) {
+                                    scope.temp.isLiked = true;
+                                    $rootScope.user.likedComments.push(scope.root.id);
+                                    scope.root.numberOfLikes += 1;
+                                    updateUser();
+                                    commentService.update(scope.root.id, scope.root);
+                                }
+                                else if (!scope.temp.isLiked && scope.temp.isDisliked) {
+                                    var idx = $rootScope.user.dislikedComments.indexOf(scope.root.id);
+                                    if (idx > -1) {
+                                        scope.temp.isDisliked = false;
+                                        $rootScope.user.dislikedComments.splice(idx, 1);
+                                        scope.root.numberOfDislikes -= 1;
+                                        updateUser();
+                                        commentService.update(scope.root.id, scope.root);
+                                    }
+                                }
+                            };
+
+                            scope.toggleDislike = function() {
+                                if (!scope.temp.isLiked && !scope.temp.isDisliked) {
+                                    scope.temp.isDisliked = true;
+                                    $rootScope.user.dislikedComments.push(scope.root.id);
+                                    scope.root.numberOfDislikes += 1;
+                                    updateUser();
+                                    commentService.update(scope.root.id, scope.root);
+                                }
+                                else if (scope.temp.isLiked && !scope.temp.isDisliked) {
+                                    var idx = $rootScope.user.likedComments.indexOf(scope.root.id);
+                                    if (idx > -1) {
+                                        scope.temp.isLiked = false;
+                                        $rootScope.user.likedComments.splice(idx, 1);
+                                        scope.root.numberOfLikes -= 1;
+                                        updateUser();
+                                        commentService.update(scope.root.id, scope.root);
+                                    }
+                                }
+                            };
                         }
                     });
                 }
