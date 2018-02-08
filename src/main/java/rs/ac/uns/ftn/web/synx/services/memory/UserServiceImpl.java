@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import rs.ac.uns.ftn.web.synx.database.MyDatabase;
+import rs.ac.uns.ftn.web.synx.model.Comment;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
+import rs.ac.uns.ftn.web.synx.services.CommentService;
 import rs.ac.uns.ftn.web.synx.services.TopicService;
 import rs.ac.uns.ftn.web.synx.services.UserService;
 import rs.ac.uns.ftn.web.synx.util.PathManager;
@@ -122,6 +124,25 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Comment> getSavedComments(String username) {
+		User user = findOne(username);
+		if (user != null) {
+			List<String> savedComments = user.getSavedComments();
+			List<Comment> savedCommentsObjects = new ArrayList<>();
+			CommentService commentService = new CommentServiceImpl();
+			
+			for (String commentId : savedComments) {
+				Comment foundedComment = commentService.findOne(commentId);
+				if (foundedComment != null) {
+					savedCommentsObjects.add(foundedComment);
+				}
+			}
+			return savedCommentsObjects;
+		}
+		return null;
+	}
 
 	@Override
 	public List<Topic> getUpvotedTopics(String username) {
@@ -156,5 +177,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+
 
 }

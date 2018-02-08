@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import rs.ac.uns.ftn.web.synx.model.Comment;
 import rs.ac.uns.ftn.web.synx.model.Topic;
 import rs.ac.uns.ftn.web.synx.model.User;
 import rs.ac.uns.ftn.web.synx.services.UserService;
@@ -56,6 +57,18 @@ public class UserResource {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		return Response.ok(topics).build();
+	}
+	
+	@PermitAll
+	@GET
+	@Path("/savedcomments/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getSavedComments(@PathParam("username") String username) {
+		List<Comment> comments = userService.getSavedComments(username);
+		if (comments == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok(comments).build();
 	}
 	
 	@PermitAll
