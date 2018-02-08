@@ -11,3 +11,13 @@
         </p>
     </div>
 </div>
+<div class="saved-comments" ng-repeat="comment in savedComments">
+    <h4><a ui-sref="topic({title: comment.topic})">{{comment.topic}}</a></h4>
+    <div>
+        <small>
+            <a ui-sref="user({username: comment.author})">by {{comment.author}}</a>
+            <span> {{comment.numberOfLikes-numberOfDislikes}} points</span>
+        </small>
+    </div>
+    <p>{{comment.content}}</p>
+</div>

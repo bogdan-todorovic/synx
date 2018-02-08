@@ -29,6 +29,10 @@
                 return $http.get(self.urlBase + "/savedtopics/" + username);
             };
 
+            self.getSavedComments = function(username) {
+                return $http.get(self.urlBase + "/savedcomments/" + username);
+            };
+
             self.getUpvotedTopics = function(username) {
                 return $http.get(self.urlBase + "/upvotedtopics/" + username);
             };

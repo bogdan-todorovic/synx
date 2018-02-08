@@ -38,6 +38,12 @@
                                     return response.data;
                                 });
                         },
+                        savedComments: function($stateParams, userService) {
+                            return userService.getSavedComments($stateParams.username)
+                                .then(function(response) {
+                                   return response.data; 
+                                });
+                        },
                         messages: function($stateParams, messageService) {
                             return messageService.getAllMessagesForUser($stateParams.username)
                                 .then(function(response) {
@@ -50,7 +56,6 @@
                                     return response.data;
                                 });
                         },
-
                         downvotedTopics: function($stateParams, userService) {
                             return userService.getDownvotedTopics($stateParams.username)
                                 .then(function(response) {
