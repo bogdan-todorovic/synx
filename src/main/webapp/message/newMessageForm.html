@@ -1,4 +1,4 @@
-<div class="container login-container">
+<div class="container login-container new-message-form">
     <div class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-4 wrapper">
             <form ng-submit="send()" role="form">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Message</label>
-                    <input type="text" class="form-control" id="content" ng-model="message.content" placeholder="Message" required>
+                    <textarea type="text" class="form-control" id="content" ng-model="message.content" placeholder="Message" required></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">

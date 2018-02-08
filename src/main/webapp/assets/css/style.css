@@ -546,6 +546,10 @@
 .messages .panel-heading:hover {
     cursor: pointer;
 }
+.messages li {
+    list-style-position: inside;
+    text-overflow: ellipsis;
+}
 
 .saved-comments {
     margin: 5px;
@@ -554,4 +558,9 @@
 .saved-comments h4 {
     margin-top: 5px;
     margin-bottom: 0;
+}
+
+.new-message-form #content {
+    word-wrap: break-word;
+    resize: none;
 }

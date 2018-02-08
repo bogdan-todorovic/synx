@@ -4,6 +4,8 @@
         <span class="badge">{{value.length}}</span>
     </div>
     <div class="panel-body" ng-show="show">
-        <div ng-repeat="message in value">{{message.content}}</div>
+        <ul>
+            <li ng-repeat="message in value">{{message.content}}</li>
+        </ul>
     </div>
 </div>
